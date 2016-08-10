@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{WebApp_related_tests node_modules}" />
+    <file url="PROJECT" libraries="{WebApp_related_tests node_modules, d3-DefinitelyTyped, jquery-DefinitelyTyped, jqueryui-DefinitelyTyped, leaflet-DefinitelyTyped, react-DefinitelyTyped}" />
+    <includedPredefinedLibrary name="Node.js Core" />
+  </component>
+</project>

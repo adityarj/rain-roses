@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="12ca832d-2ebf-4e00-8b80-fdba932a74cd" name="Default" comment="" />
+    <ignored path="WebApp_related_tests.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="WebApp_related_tests" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="frame_new.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frame_new.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="1712" column="62" selection-start-line="1712" selection-start-column="62" selection-end-line="1712" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProcessElevationData.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/csv_files/ProcessElevationData.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="837">
+              <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forcelayoutexpt.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/forcelayoutexpt.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3256">
+              <caret line="148" column="33" selection-start-line="93" selection-start-column="0" selection-end-line="148" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PollutionGraph.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PollutionGraph.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="1774" column="34" selection-start-line="1774" selection-start-column="34" selection-end-line="1774" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScatterPlot.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ScatterPlot.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22682">
+              <caret line="1031" column="57" selection-start-line="1031" selection-start-column="52" selection-end-line="1031" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="frame_data_new.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frame_data_new.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="919">
+              <caret line="636" column="23" selection-start-line="636" selection-start-column="23" selection-end-line="636" selection-end-column="23" />
+              <caret line="645" column="6" selection-start-line="645" selection-start-column="6" selection-end-line="645" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$USER_HOME$/Data_Visualization/react-15.1.0/react_test.html" />
+        <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/node_modules/react-input-range/dist/react-input-range.css" />
+        <option value="$PROJECT_DIR$/D3HeatmapExperiment.html" />
+        <option value="$PROJECT_DIR$/Pie_chart.html" />
+        <option value="$PROJECT_DIR$/frame_datavis.html" />
+        <option value="$PROJECT_DIR$/leaflettest.html" />
+        <option value="$PROJECT_DIR$/csv_files/convertcsv.geojson" />
+        <option value="$PROJECT_DIR$/csv_files/convertcsv.js" />
+        <option value="$PROJECT_DIR$/windspeed_map.html" />
+        <option value="$PROJECT_DIR$/dynamic_fetch.js" />
+        <option value="$PROJECT_DIR$/CoordinateData" />
+        <option value="$PROJECT_DIR$/dynamic_fetch.html" />
+        <option value="$PROJECT_DIR$/rainfall_heatmap.html" />
+        <option value="$PROJECT_DIR$/aux_files/china-map/china.geo.json" />
+        <option value="$PROJECT_DIR$/aux_files/china-map/china_map.html" />
+        <option value="$PROJECT_DIR$/MarkerQuest" />
+        <option value="$PROJECT_DIR$/MarkerQuest.html" />
+        <option value="$PROJECT_DIR$/linechartwithzoom.js" />
+        <option value="$PROJECT_DIR$/pollution_graph.html" />
+        <option value="$PROJECT_DIR$/rose_chart.html" />
+        <option value="$PROJECT_DIR$/csv_files/ProcessElevationData.html" />
+        <option value="$PROJECT_DIR$/frame_data.js" />
+        <option value="$PROJECT_DIR$/csv_files/CoordinateMapData.js" />
+        <option value="$PROJECT_DIR$/ScatterPlot" />
+        <option value="$PROJECT_DIR$/csv_files/Basin_Info.csv" />
+        <option value="$PROJECT_DIR$/csv_files/ProcessElevationData.js" />
+        <option value="$PROJECT_DIR$/csv_files/R-W-Data.js" />
+        <option value="$PROJECT_DIR$/csv_files/RWC.csv" />
+        <option value="$PROJECT_DIR$/ScatterPlot.html" />
+        <option value="$PROJECT_DIR$/RainfallHeatmap.js" />
+        <option value="$PROJECT_DIR$/forcelayoutexpt.html" />
+        <option value="$PROJECT_DIR$/ScatterPlot.js" />
+        <option value="$PROJECT_DIR$/frame_data_new.js" />
+        <option value="$PROJECT_DIR$/frame_new.html" />
+        <option value="$PROJECT_DIR$/PollutionGraph.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBowerSettings">
+    <exe-path />
+    <config-path />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1924" />
+    <option name="height" value="1048" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="JavaScriptPreferStrict" value="false" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="javascript.nodejs.core.library.configured.version" value="4.4.5" />
+    <property name="nodejs_interpreter_path" value="C:\Program Files\nodejs\node" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="SearchEverywhereHistoryKey" value="debug&#9;ACTION&#9;ActivateDebugToolWindow" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="I:\ALP 2016\App_testing\WebApp_related_tests\csv_files" />
+      <recent name="I:\ALP 2016\App_testing\WebApp_related_tests" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="I:\ALP 2016\App_testing\WebApp_related_tests\csv_files" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.forcelayoutexpt.html">
+    <configuration default="false" name="frame_new.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/WebApp_related_tests/frame_new.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="forcelayoutexpt.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/WebApp_related_tests/forcelayoutexpt.html">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.frame_new.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.forcelayoutexpt.html" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.forcelayoutexpt.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.frame_new.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="12ca832d-2ebf-4e00-8b80-fdba932a74cd" name="Default" comment="" />
+      <created>1466579368363</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1466579368363</updated>
+      <workItem from="1466579369590" duration="4982000" />
+      <workItem from="1466650911283" duration="21070000" />
+      <workItem from="1466733821758" duration="12128000" />
+      <workItem from="1466821304914" duration="25220000" />
+      <workItem from="1466910479970" duration="20062000" />
+      <workItem from="1466995897703" duration="9427000" />
+      <workItem from="1467181444419" duration="7756000" />
+      <workItem from="1467212353719" duration="728000" />
+      <workItem from="1467249420167" duration="20164000" />
+      <workItem from="1467297621732" duration="1316000" />
+      <workItem from="1467335951383" duration="2167000" />
+      <workItem from="1467339190289" duration="8703000" />
+      <workItem from="1467362905873" duration="6400000" />
+      <workItem from="1467380358705" duration="1446000" />
+      <workItem from="1467385458711" duration="2203000" />
+      <workItem from="1467423480043" duration="6293000" />
+      <workItem from="1467430014834" duration="3843000" />
+      <workItem from="1467442587046" duration="10180000" />
+      <workItem from="1467464789805" duration="7838000" />
+      <workItem from="1467514724688" duration="9777000" />
+      <workItem from="1467531501629" duration="23000" />
+      <workItem from="1467533881965" duration="2178000" />
+      <workItem from="1467621959366" duration="5332000" />
+      <workItem from="1467696430066" duration="7556000" />
+      <workItem from="1467791773498" duration="2618000" />
+      <workItem from="1467795400717" duration="3426000" />
+      <workItem from="1467816550694" duration="657000" />
+      <workItem from="1467865203164" duration="1833000" />
+      <workItem from="1467868134537" duration="10739000" />
+      <workItem from="1467886701049" duration="2011000" />
+      <workItem from="1467888926475" duration="6680000" />
+      <workItem from="1467910136850" duration="829000" />
+      <workItem from="1467937656422" duration="1299000" />
+      <workItem from="1467941010786" duration="8170000" />
+      <workItem from="1467957942855" duration="1975000" />
+      <workItem from="1468029309487" duration="3791000" />
+      <workItem from="1468035112039" duration="12040000" />
+      <workItem from="1468074774734" duration="1055000" />
+      <workItem from="1468076527537" duration="2368000" />
+      <workItem from="1468113534940" duration="3557000" />
+      <workItem from="1468118381866" duration="1891000" />
+      <workItem from="1468120322157" duration="10546000" />
+      <workItem from="1468203498139" duration="30254000" />
+      <workItem from="1468291818050" duration="13179000" />
+      <workItem from="1468323823181" duration="4561000" />
+      <workItem from="1468376743164" duration="8595000" />
+      <workItem from="1468393339108" duration="1576000" />
+      <workItem from="1468395954714" duration="187000" />
+      <workItem from="1468396865754" duration="7730000" />
+      <workItem from="1468418711372" duration="598000" />
+      <workItem from="1468461772547" duration="12555000" />
+      <workItem from="1468505052873" duration="4512000" />
+      <workItem from="1468548413201" duration="22320000" />
+      <workItem from="1468635786737" duration="20239000" />
+      <workItem from="1468678447436" duration="20734000" />
+      <workItem from="1468767177264" duration="3822000" />
+      <workItem from="1468809076241" duration="11440000" />
+      <workItem from="1468832148672" duration="747000" />
+      <workItem from="1468844533959" duration="32675000" />
+      <workItem from="1468980064303" duration="49190000" />
+      <workItem from="1469105839811" duration="8531000" />
+      <workItem from="1469153237426" duration="3659000" />
+      <workItem from="1469170651509" duration="18346000" />
+      <workItem from="1469239892007" duration="23645000" />
+      <workItem from="1469321096660" duration="13974000" />
+      <workItem from="1469345062481" duration="1228000" />
+      <workItem from="1469355868617" duration="1010000" />
+      <workItem from="1469364438859" duration="2305000" />
+      <workItem from="1469368529706" duration="3895000" />
+      <workItem from="1469384335016" duration="926000" />
+      <workItem from="1469408471611" duration="983000" />
+      <workItem from="1469414579654" duration="16357000" />
+      <workItem from="1469453338299" duration="7399000" />
+      <workItem from="1469498958497" duration="8924000" />
+      <workItem from="1469515468237" duration="788000" />
+      <workItem from="1469519518274" duration="27467000" />
+      <workItem from="1469583918373" duration="7270000" />
+      <workItem from="1469598425565" duration="11674000" />
+      <workItem from="1469612465065" duration="2341000" />
+      <workItem from="1469620490711" duration="36754000" />
+      <workItem from="1469672639040" duration="11469000" />
+      <workItem from="1469750501513" duration="1347000" />
+      <workItem from="1469771090598" duration="13516000" />
+      <workItem from="1469794351000" duration="11994000" />
+      <workItem from="1469858408291" duration="8801000" />
+      <workItem from="1469892826039" duration="1053000" />
+      <workItem from="1470032103306" duration="10272000" />
+      <workItem from="1470054217506" duration="7845000" />
+      <workItem from="1470067901004" duration="688000" />
+      <workItem from="1470358050840" duration="12678000" />
+      <workItem from="1470378987446" duration="7786000" />
+      <workItem from="1470404133407" duration="2078000" />
+      <workItem from="1470407097676" duration="3448000" />
+      <workItem from="1470426582538" duration="467000" />
+      <workItem from="1470494162787" duration="387000" />
+      <workItem from="1470535457319" duration="1519000" />
+      <workItem from="1470648207041" duration="6014000" />
+      <workItem from="1470669818342" duration="3327000" />
+      <workItem from="1470706247282" duration="4965000" />
+      <workItem from="1470797694653" duration="8540000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="832861000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1924" height="1048" extended-state="1" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32686254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32275712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32275712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32686254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="19" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/Data_Visualization/react-15.1.0/react_test.html" />
+    <entry file="file://$PROJECT_DIR$/node_modules/react-input-range/dist/react-input-range.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../D3_tests.html" />
+    <entry file="file://$PROJECT_DIR$/aux_files/tip.js" />
+    <entry file="file://$PROJECT_DIR$/Pie_chart.html" />
+    <entry file="file://$PROJECT_DIR$/aux_files/leaflet-windbarb.js" />
+    <entry file="file://$PROJECT_DIR$/windspeed_map.html" />
+    <entry file="file://$PROJECT_DIR$/csv_files/CoordinateData" />
+    <entry file="file://$PROJECT_DIR$/dynamic_fetch.html" />
+    <entry file="file://$PROJECT_DIR$/rainfall_heatmap.html" />
+    <entry file="file://$PROJECT_DIR$/aux_files/china-map/china.geo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="422" column="34" selection-start-line="422" selection-start-column="34" selection-end-line="422" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MarkerQuest" />
+    <entry file="file://$PROJECT_DIR$/aux_files/china-map/china_map.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="806">
+          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/china.geo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rosechartexpt" />
+    <entry file="file://$PROJECT_DIR$/rose_chart" />
+    <entry file="file://$PROJECT_DIR$/MarkerQuest.html" />
+    <entry file="file://J:/SUTD/Root_Stuff/July17/untitled.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="118" selection-start-line="1" selection-start-column="108" selection-end-line="1" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaflettest.html" />
+    <entry file="file://$PROJECT_DIR$/linechartwithzoom.js" />
+    <entry file="file://$PROJECT_DIR$/frame_datavis.html" />
+    <entry file="file://$PROJECT_DIR$/node_modules/leaflet-polylinedecorator/src/L.Symbol.js" />
+    <entry file="file://$PROJECT_DIR$/rose_chart.html" />
+    <entry file="file://$PROJECT_DIR$/csv_files/ProcessElevationData.html" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="758" column="0" selection-start-line="758" selection-start-column="0" selection-end-line="758" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pollution_graph.html" />
+    <entry file="file://$PROJECT_DIR$/csv_files/convertcsv.geojson">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MapDataRT.geo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="0" column="1964" selection-start-line="0" selection-start-column="1962" selection-end-line="0" selection-end-column="1964" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/csv_files/CoordinateMapData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="676" selection-start-line="3" selection-start-column="655" selection-end-line="3" selection-end-column="676" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/csv_files/convertcsv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7371">
+          <caret line="81072" column="4" selection-start-line="81072" selection-start-column="4" selection-end-line="81072" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/D3HeatmapExperiment.html" />
+    <entry file="file://$PROJECT_DIR$/ScatterPlot" />
+    <entry file="file://$PROJECT_DIR$/csv_files/Basin_Info.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2816">
+          <caret line="128" column="15" selection-start-line="128" selection-start-column="15" selection-end-line="128" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/csv_files/BasinInfo.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1363">
+          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/csv_files/R-W-Data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/csv_files/RWCScsv" />
+    <entry file="file://$PROJECT_DIR$/csv_files/RWC.csv" />
+    <entry file="file://$PROJECT_DIR$/ScatterPlot.html" />
+    <entry file="file://$PROJECT_DIR$/main.js" />
+    <entry file="file://$PROJECT_DIR$/frame_data.js" />
+    <entry file="file://$PROJECT_DIR$/dynamic_fetch.js" />
+    <entry file="file://$PROJECT_DIR$/RainfallHeatmap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://I:/ALP 2016/App_testing/WebApp_related_tests/frame_data_new.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/block.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="238" column="17" selection-start-line="238" selection-start-column="17" selection-end-line="238" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forcelayoutexpt.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3256">
+          <caret line="148" column="33" selection-start-line="93" selection-start-column="0" selection-end-line="148" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScatterPlot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22682">
+          <caret line="1031" column="57" selection-start-line="1031" selection-start-column="52" selection-end-line="1031" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frame_data_new.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="919">
+          <caret line="636" column="23" selection-start-line="636" selection-start-column="23" selection-end-line="636" selection-end-column="23" />
+          <caret line="645" column="6" selection-start-line="645" selection-start-column="6" selection-end-line="645" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/csv_files/ProcessElevationData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frame_new.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="1712" column="62" selection-start-line="1712" selection-start-column="62" selection-end-line="1712" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PollutionGraph.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="1774" column="34" selection-start-line="1774" selection-start-column="34" selection-end-line="1774" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

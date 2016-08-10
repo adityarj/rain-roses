@@ -1,0 +1,22 @@
+{
+  "name": "dependencies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "frame_data.js",
+  "dependencies": {
+    "browserify": "^13.0.1",
+    "datatables.net": "^1.10.12",
+    "geojson": "^0.3.0",
+    "leaflet-rotatedmarker": "^0.1.0",
+    "moment": "^2.13.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-input-range": "^0.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

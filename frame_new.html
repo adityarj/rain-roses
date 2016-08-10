@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Vis Frame</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="node_modules/react/dist/react.min.js" ></script>
+    <script src="node_modules/react-dom/dist/react-dom.min.js"></script>
+    <link rel="stylesheet" href="node_modules/react-input-range/dist/react-input-range.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="https://cdn.rawgit.com/fryn/html5slider/gh-pages/html5slider.js"></script>
+    <script src="csv_files/CoordinateMapData.js"></script>
+    <script src="RainfallHeatmap.js"></script>
+    <script src="PollutionGraph.js"></script>
+    <script src="ScatterPlot.js"></script>
+    <script src="node_modules/moment/min/moment.min.js"></script>
+    <script src="node_modules/datatables.net/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="aux_files/excellentexport-master/excellentexport.min.js"></script>
+    <script type="text/javascript" src="csv_files/ProcessElevationData.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="aux_files/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+    <style>
+        body {
+            background-color: #F0F0F0;
+        }
+        input[type='range'] {
+            -webkit-appearance: none !important;
+            -webkit-border-radius: 5px;
+            /*-webkit-box-shadow: inset 0 0 5px #333;*/
+            background-color: rgb(53, 135, 212);
+            height: 10px;
+            width: 600px;
+            margin: 20px;
+            /*position: relative;
+             left: 10%;*/
+
+        }
+
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none !important;
+            -webkit-border-radius: 15px;
+            background-color: #bbb;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#bbb), to(#888));
+            border: 1px solid #000;
+            height: 25px;
+            width: 25px;
+        }
+        #container {
+            width: 1800px;
+        }
+        .BasinRealTimeSet {
+            opacity: 0.8;
+        }
+        .BasinRealTimeSet:hover {
+            opacity: 1;
+        }
+        #MapMain {
+            height: 600px;
+            background-color: #b4d8ff;
+        }
+        .arc {
+            fill-opacity: .8;
+        }
+
+        .arc:hover {
+            fill-opacity: 1;
+        }
+        .RoseChart {
+            cursor: default;
+        }
+        .CircleChart {
+            cursor: default;
+        }
+        #RealTime {
+            height: 380px;
+            border-radius: 10px;
+            margin-top: 20px;
+            padding-bottom: 10px;
+            background-color: #b5bbbf;
+        }
+        #InfoTable {
+            background-color: gainsboro;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        #LabelRealTime {
+            display: inline-block;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #QuantityInfo {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        #AdditionalDataTable {
+            border-radius: 10px;
+        }
+        #SettingsMain {
+            height: 250px;
+            width: 300px;
+            background-color: #c3c9ce;
+        }
+        #SettingsMain div div {
+            display: inline-block;
+        }
+        #SwitchScreen {
+            height: 370px;
+            text-align: center;
+            line-height: 200px;
+            width: 300px;
+            background-color: #b5bbbf;
+        }
+        #SecoMap {
+            height: 250px;
+            text-align: center;
+            z-index: 2;
+            background-color: #d8e0fa;
+        }
+        #SecoSettings {
+            z-index: 2;
+            height: 100px;
+            line-height: 80px;
+            background-color: #ccccd3;
+        }
+        #GraphSettings {
+            height: 400px;
+            background-color: #d1d6ee;
+        }
+        #SwitchScreenS {
+            height: 70px;
+            text-align: right;
+            line-height: 80px;
+        }
+        #Heatmap {
+            height: auto;
+            width: 103%;
+            background-color: #d8d8e5;
+        }
+        #Heatmap div div {
+            display: inline-block;
+        }
+        #Heatmap div div div {
+            display: inline-block;
+        }
+
+        #TextHeatmap  {
+            font-size: 30px;
+            padding-top: 20px;
+            font-family: 'Typo Grotesk Black',sans-serif;
+        }
+        #Info1 {
+            z-index: 9;
+            position: absolute;
+            display: block;
+        }
+        #Info2 {
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            background-color: #e7ff94;
+        }
+        #LeftTabAux {
+            width: 280px;
+            position: fixed;
+        }
+
+        #HeaderAux {
+            height: 500px;
+            background-color: #a1c4ed;
+        }
+        #Info3 {
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            background-color: #c3aac3;
+        }
+        #ListOptions {
+            height: 100px;
+            background-color: #c3c9ce;
+            line-height: 100px;
+        }
+        #DataList {
+            text-align: center;
+            background-color: #d5e1ee;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        #SwitchScreenLeft {
+            height: 60px;
+            text-align: left;
+            line-height: 80px;
+        }
+        #SwitchScreenRight {
+            height: 100px;
+            background-color: #c3c9ce;
+            line-height: 100px;
+            text-align: right;
+        }
+        #MainFrameExtended {
+            width: auto;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 25px;
+            background-color: #c3c9ce;
+        }
+        #SeparatorTable {
+            background-color: #d5e1ee;
+            height: 15px;
+            border-radius: 10px;
+        }
+        #Droppable {
+            height: 400px;
+            width: auto;
+            overflow: hidden;
+        }
+        #DropText {
+            color: #b2b7cb;
+        }
+        #AuxHeader {
+            position: fixed;
+            width: 80px;
+        }
+        .linePH, .linePer, .lineAmm, .lineTOC, .lineSol {
+            fill: none;
+            stroke-width: 2px;
+            stroke: #000;
+        }
+        .area {
+            fill: 'orange';
+        }
+        #PolText {
+            background-color: #bdafff;
+        }
+        .provinceArray {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 8px;
+            background-color: #ffe388;
+        }
+        #Data2015Switch {
+            height:120px;
+        }
+        #Data2015SR {
+            width: 1070px;
+        }
+        #Data2015Switch div {
+            background-color: #c3c9ce;
+
+        }
+        #PolMapDetails {
+            background-color: #c3c9ce;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            border-radius: 7px;
+        }
+        .SecoSetBut {
+            margin-left: 10px;
+            width: auto;
+            font-size: 17px;
+            display: inline-block;
+        }
+        #ScalePolInfo table {
+            font-size: 10px;
+        }
+        #ColorScalePol {
+            margin-top: 20px;
+        }
+        #ColorScalePolHeader {
+            margin-bottom: 20px;
+        }
+        .infoPolMap {
+            background-color: #6b9bcf;
+            color: white;
+            border-radius: 5px;
+            display: inline-block;
+            margin-left: 40px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-family: "Lato Black",sans-serif;
+        }
+        .xaxisPH path, .yaxisPH path{
+            fill:none;
+            stroke: #2f2f2f;
+        }
+        .xaxisPH path, .yaxisPH path, .xaxisSol path, .yaxisSol path,
+        .xaxisAmm path, .yaxisAmm path,
+        .xaxisPerm path, .yaxisPerm path,
+        .xaxisTOC path, .yaxisTOC path, .y.axisSC path, .x.axisSC path{
+            fill:none;
+            stroke: #2f2f2f;
+            shape-rendering: crispEdges;
+        }
+        .xaxisPH text, .yaxisPH text, .xaxisSol text, .yaxisSol text,
+        .xaxisAmm text, .yaxisAmm text,
+        .xaxisPerm text, .yaxisPerm text,
+        .xaxisTOC text, .yaxisTOC text,.y.axisSC text, .x.axisSC text {
+            font-size: 11px;
+        }
+    </style>
+    <div id="content"></div>
+    <script type="text/babel" src="frame_data_new.js"></script>
+    <script type="text/javascript" id="Jquery stuff">
+
+        var GlobalInterval = '';
+        var NewIDHighlight = '';
+        var OldStyleColor = '';
+
+        $(document).ready(function () {
+
+
+            $.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22http%3A%2F%2F58.68.130.147%2FDefault.aspx%23%22%20and%20xpath%20%3D%20'%2F%2Fcenter%2Fform%2Finput'&format=json&diagnostics=true&callback=",function (data,error) {
+
+
+                $('#LoadingScreen').slideUp();
+                $('#FrameMain').fadeIn(800);
+
+                var list = data.query.results.input;
+//                var DataList = list[0].value.split('!!');
+//                var NameList = list[1].value.split('!!');
+//                var SourceList = list[2].value.split('!!');
+//                var list = ["0$04:00:00  $-$-$-$-$9999$-$9999$-$-$-$2015-08-29  $!!5$08:00:00  $7.60$Ⅰ$6.35$Ⅱ$3.03$Ⅱ$9999$-$0.27$Ⅱ$2016-07-27  $!!8$04:00:00  $8.37$Ⅰ$7.17$Ⅱ$5.46$Ⅲ$9999$-$0.14$Ⅰ$2016-07-27  $!!12$04:00:00  $7.70$Ⅰ$3.57$Ⅳ$2.79$Ⅱ$9999$-$0.13$Ⅰ$2016-07-27  $!!14$16:00:00  $7.28$Ⅰ$4.77$Ⅳ$4.92$Ⅲ$9999$-$0.08$Ⅰ$2016-07-27  $!!16$04:00:00  $7.63$Ⅰ$8.05$Ⅰ$2.22$Ⅱ$9999$-$0.22$Ⅱ$2016-07-27  $!!18$08:00:00  $7.95$Ⅰ$4.95$Ⅳ$1.70$Ⅰ$9999$-$0.31$Ⅱ$2016-07-27  $!!19$00:00:00  $8.40$Ⅰ$4.76$Ⅳ$-$-$9999$-$0.23$Ⅱ$2016-07-28  $!!20$20:00:00  $8.16$Ⅰ$3.70$Ⅳ$5.50$Ⅲ$9.90$-$0.36$Ⅱ$2016-07-27  $!!32$08:00:00  $7.2$Ⅰ$9.44$Ⅰ$-$-$9999$-$1.33$Ⅳ$2016-07-27  $!!53$00:00:00  $7.62$Ⅰ$5.94$Ⅲ$5.54$Ⅲ$9999$-$0.13$Ⅰ$2016-07-28  $!!54$15:00:00  $7.95$Ⅰ$8.17$Ⅰ$-$-$8.32$-$0.69$Ⅲ$2016-07-27  $!!55$12:00:00  $7.47$Ⅰ$6.40$Ⅱ$7.29$Ⅳ$9999$-$0.17$Ⅱ$2016-07-27  $!!56$10:00:00  $7.35$Ⅰ$5.16$Ⅲ$1.12$Ⅰ$9999$-$0.10$Ⅰ$2016-07-27  $!!57$16:00:00  $6.70$Ⅰ$-$-$-$-$-$-$1.39$Ⅳ$2016-07-27  $!!58$00:00:00  $7.29$Ⅰ$3.51$Ⅳ$4.61$Ⅲ$*$-$0.38$Ⅱ$2016-07-28  $!!59$16:00:00  $7.48$Ⅰ$3.61$Ⅳ$3.65$Ⅱ$4.24$-$0.33$Ⅱ$2016-07-27  $!!60$08:00:00  $7.28$Ⅰ$4.23$Ⅳ$5.68$Ⅲ$9999$-$1.35$Ⅳ$2016-07-27  $!!61$12:00:00  $7.05$Ⅰ$7.49$Ⅱ$-$-$8.80$-$0.25$Ⅱ$2016-07-27  $!!62$20:00:00  $8.45$Ⅰ$11.96$Ⅰ$10.27$Ⅴ$9999$-$0.14$Ⅰ$2016-07-27  $!!63$00:00:00  $6.98$Ⅰ$2.57$Ⅴ$2.77$Ⅱ$9999$-$0.44$Ⅱ$2016-06-12  $!!64$20:00:00  $6.70$Ⅰ$7.05$Ⅱ$1.28$Ⅰ$1.04$-$0.13$Ⅰ$2016-07-27  $!!65$20:00:00  $6.94$Ⅰ$4.23$Ⅳ$3.78$Ⅱ$9999$-$0.12$Ⅰ$2016-07-27  $!!66$00:00:00  $7.71$Ⅰ$4.65$Ⅳ$7.06$Ⅳ$0.65$-$0.66$Ⅲ$2016-07-27  $!!67$16:00:00  $7.12$Ⅰ$6.31$Ⅱ$5.57$Ⅲ$-$-$0.17$Ⅱ$2016-07-27  $!!68$08:00:00  $6.94$Ⅰ$7.57$Ⅰ$6.97$Ⅳ$-$-$0.18$Ⅱ$2016-07-27  $!!69$04:00:00  $7.66$Ⅰ$13.69$Ⅰ$3.36$Ⅱ$-$-$0.35$Ⅱ$2016-07-27  $!!70$08:00:00  $7.25$Ⅰ$2.32$Ⅴ$4.11$Ⅲ$5.26$-$1.60$Ⅴ$2016-07-27  $!!72$04:00:00  $8.04$Ⅰ$7.90$Ⅰ$0.89$Ⅰ$1.36$-$0.02$Ⅰ$2016-05-26  $!!73$20:00:00  $7.92$Ⅰ$8.53$Ⅰ$4.84$Ⅲ$-$-$0.27$Ⅱ$2016-07-27  $!!74$16:00:00  $9.46$劣Ⅴ$8.84$Ⅰ$2.28$Ⅱ$9999$-$0.18$Ⅱ$2016-07-27  $!!75$12:00:00  $7.12$Ⅰ$7.05$Ⅱ$1.56$Ⅰ$9999$-$0.04$Ⅰ$2016-07-27  $!!76$08:00:00  $7.67$Ⅰ$8.22$Ⅰ$4.75$Ⅲ$9999$-$0.47$Ⅱ$2016-07-27  $!!77$06:00:00  $7.79$Ⅰ$4.59$Ⅳ$3.17$Ⅱ$-$-$0.26$Ⅱ$2016-07-27  $!!78$00:00:00  $7.51$Ⅰ$6.67$Ⅱ$6.24$Ⅳ$7.90$-$0.09$Ⅰ$2016-07-28  $!!79$08:00:00  $-$-$6.87$Ⅱ$2.22$Ⅱ$9999$-$0.11$Ⅰ$2016-07-27  $!!80$20:00:00  $7.44$Ⅰ$5.34$Ⅲ$1.52$Ⅰ$9999$-$0.27$Ⅱ$2016-07-27  $!!81$12:00:00  $7.80$Ⅰ$7.77$Ⅰ$5.99$Ⅲ$9999$-$0.29$Ⅱ$2016-07-27  $!!83$11:00:00  $7.89$Ⅰ$5.64$Ⅲ$14.72$Ⅴ$-$-$0.15$Ⅰ$2016-07-27  $!!84$16:00:00  $7.81$Ⅰ$7.47$Ⅱ$10.88$Ⅴ$23.75$-$1.59$Ⅴ$2016-07-27  $!!85$04:00:00  $8.06$Ⅰ$5.56$Ⅲ$2.15$Ⅱ$9999$-$0.12$Ⅰ$2016-07-27  $!!97$08:00:00  $6.44$Ⅰ$3.57$Ⅳ$-$-$3.58$-$0.32$Ⅱ$2016-07-27  $!!103$00:00:00  $7.45$Ⅰ$3.64$Ⅳ$2.24$Ⅱ$9999$-$0.20$Ⅱ$2016-07-28  $!!104$15:00:00  $9.47$劣Ⅴ$13.34$Ⅰ$2.86$Ⅱ$9999$-$0.04$Ⅰ$2016-07-27  $!!105$00:00:00  $7.06$Ⅰ$4.47$Ⅳ$5.53$Ⅲ$-$-$0.33$Ⅱ$2016-07-28  $!!106$08:00:00  $8.06$Ⅰ$14.96$Ⅰ$7.43$Ⅳ$-$-$0.41$Ⅱ$2016-07-27  $!!107$08:00:00  $6.97$Ⅰ$7.75$Ⅰ$1.16$Ⅰ$9999$-$0.46$Ⅱ$2016-07-27  $!!108$04:00:00  $7.85$Ⅰ$9.26$Ⅰ$3.20$Ⅱ$-$-$0.20$Ⅱ$2016-07-27  $!!109$16:00:00  $6.78$Ⅰ$4.66$Ⅳ$5.34$Ⅲ$9999$-$0.16$Ⅱ$2016-07-27  $!!110$08:00:00  $6.21$Ⅰ$3.60$Ⅳ$1.69$Ⅰ$-$-$0.22$Ⅱ$2016-07-27  $!!111$00:00:00  $6.61$Ⅰ$3.95$Ⅳ$6.32$Ⅳ$9999$-$0.25$Ⅱ$2016-07-28  $!!112$00:00:00  $6.78$Ⅰ$4.70$Ⅳ$3.20$Ⅱ$1.20$-$0.21$Ⅱ$2016-07-28  $!!113$04:00:00  $7.68$Ⅰ$7.60$Ⅰ$2.25$Ⅱ$-$-$0.15$Ⅰ$2016-07-21  $!!114$08:00:00  $6.94$Ⅰ$5.62$Ⅲ$2.24$Ⅱ$9999$-$0.14$Ⅰ$2016-07-27  $!!115$04:00:00  $7.25$Ⅰ$5.32$Ⅲ$-$-$-$-$2.03$劣Ⅴ$2016-07-27  $!!116$00:00:00  $7.28$Ⅰ$5.14$Ⅲ$2.60$Ⅱ$9999$-$0.12$Ⅰ$2016-07-28  $!!117$08:00:00  $7.56$Ⅰ$7.92$Ⅰ$3.75$Ⅱ$9999$-$0.20$Ⅱ$2016-07-27  $!!118$04:00:00  $7.64$Ⅰ$6.67$Ⅱ$3.62$Ⅱ$9999$-$0.16$Ⅱ$2016-07-27  $!!119$08:00:00  $7.07$Ⅰ$6.53$Ⅱ$3.69$Ⅱ$9999$-$0.78$Ⅲ$2016-07-27  $!!120$22:00:00  $7.67$Ⅰ$2.85$Ⅴ$6.68$Ⅳ$6.96$-$1.35$Ⅳ$2016-07-27  $!!121$20:00:00  $8.08$Ⅰ$9.94$Ⅰ$1.92$Ⅰ$9999$-$0.06$Ⅰ$2016-07-27  $!!122$16:00:00  $8.37$Ⅰ$16.78$Ⅰ$9.16$Ⅳ$9.37$-$0.16$Ⅱ$2016-07-27  $!!123$12:00:00  $5.42$劣Ⅴ$6.51$Ⅱ$3.80$Ⅱ$3.17$-$0.20$Ⅱ$2016-07-27  $!!124$20:00:00  $8.74$Ⅰ$4.10$Ⅳ$17.37$劣Ⅴ$9999$-$0.38$Ⅱ$2016-07-27  $!!125$08:00:00  $8.11$Ⅰ$8.53$Ⅰ$2.29$Ⅱ$9999$-$0.15$Ⅰ$2016-07-27  $!!126$12:00:00  $6.84$Ⅰ$8.05$Ⅰ$1.25$Ⅰ$9999$-$0.39$Ⅱ$2016-07-27  $!!127$04:00:00  $7.43$Ⅰ$6.86$Ⅱ$3.70$Ⅱ$9999$-$0.13$Ⅰ$2016-07-27  $!!128$00:00:00  $6.64$Ⅰ$4.40$Ⅳ$1.23$Ⅰ$9999$-$$-$2016-07-28  $!!129$00:00:00  $7.53$Ⅰ$5.23$Ⅲ$2.78$Ⅱ$9999$-$0.22$Ⅱ$2016-07-28  $!!131$08:00:00  $6.77$Ⅰ$4.42$Ⅳ$2.76$Ⅱ$9999$-$0.24$Ⅱ$2016-07-27  $!!132$08:00:00  $-$-$-$-$2.68$Ⅱ$9999$-$-$-$2016-07-27  $!!133$00:00:00  $6.71$Ⅰ$6.05$Ⅱ$-$-$-$-$-$-$2016-07-28  $!!134$16:00:00  $7.83$Ⅰ$7.43$Ⅱ$5.13$Ⅲ$9999$-$0.28$Ⅱ$2016-07-27  $!!135$15:00:00  $-$-$-$-$-$-$-$-$-$-$2016-07-20  $!!136$12:00:00  $9.06$劣Ⅴ$6.84$Ⅱ$-$-$9999$-$2.26$劣Ⅴ$2015-10-02  $!!137$04:00:00  $8.19$Ⅰ$8.67$Ⅰ$1.80$Ⅰ$9999$-$0.05$Ⅰ$2016-07-24  $!!138$16:00:00  $-$-$-$-$9999$-$-$-$-$-$2016-06-16  $!!139$12:00:00  $6.72$Ⅰ$4.32$Ⅳ$-$-$3.90$-$0.53$Ⅲ$2014-07-19  $!!140$00:00:00  $7.57$Ⅰ$7.79$Ⅰ$5.68$Ⅲ$-$-$0.15$Ⅰ$2016-07-28  $!!141$08:00:00  $-$-$-$-$-$-$2.54$-$3.15$劣Ⅴ$2016-07-27  $!!142$04:00:00  $7.51$Ⅰ$5.29$Ⅲ$2.14$Ⅱ$9999$-$-$-$2016-06-24  $!!143$08:00:00  $5.41$劣Ⅴ$-$-$2.85$Ⅱ$9999$-$1.26$Ⅳ$2015-02-11  $!!144$08:00:00  $6.70$Ⅰ$5.35$Ⅲ$8.84$Ⅳ$-$-$0.08$Ⅰ$2016-07-27  $!!146$00:00:00  $8.01$Ⅰ$7.50$Ⅰ$6.70$Ⅳ$12.40$-$0.16$Ⅱ$2016-07-14  $!!147$14:00:00  $8.28$Ⅰ$10.38$Ⅰ$6.09$Ⅳ$7.60$-$0.13$Ⅰ$2016-07-27  $!!149$21:00:00  $8.05$Ⅰ$5.32$Ⅲ$-$-$-$-$0.17$Ⅱ$2016-07-27  $!!150$17:00:00  $8.32$Ⅰ$10.67$Ⅰ$8.22$Ⅳ$10.30$-$0.14$Ⅰ$2016-07-27  $!!151$00:00:00  $8.95$Ⅰ$4.40$Ⅳ$5.50$Ⅲ$4.00$-$0.16$Ⅱ$2016-07-28  $!!152$00:00:00  $8.05$Ⅰ$-$-$-$-$5.80$-$0.27$Ⅱ$2016-07-28  $!!153$00:00:00  $8.20$Ⅰ$10.82$Ⅰ$-$-$3.94$-$0.29$Ⅱ$2016-07-28  $!!154$16:00:00  $8.14$Ⅰ$7.84$Ⅰ$3.23$Ⅱ$4.11$-$0.10$Ⅰ$2016-07-27  $!!155$12:00:00  $7.83$Ⅰ$1.75$劣Ⅴ$-$-$-$-$-$-$2016-07-26  $!!156$12:00:00  $8.07$Ⅰ$10.81$Ⅰ$4.86$Ⅲ$9.55$-$0.17$Ⅱ$2016-07-27  $!!157$12:00:00  $7.19$Ⅰ$6.86$Ⅱ$2.28$Ⅱ$2.72$-$1.87$Ⅴ$2015-04-13  $!!158$16:00:00  $8.60$Ⅰ$8.35$Ⅰ$1.81$Ⅰ$3.10$-$0.06$Ⅰ$2016-07-27  $!!159$20:00:00  $8.10$Ⅰ$4.86$Ⅳ$8.85$Ⅳ$7.65$-$-$-$2016-07-27  $!!161$08:00:00  $-$-$8.92$Ⅰ$7.1$Ⅳ$8.3$-$0.26$Ⅱ$2016-07-27  $!!162$08:00:00  $7.14$Ⅰ$6.64$Ⅱ$3.16$Ⅱ$6.74$-$0.50$Ⅱ$2016-07-02  $!!164$00:00:00  $8.16$Ⅰ$4.05$Ⅳ$6.80$Ⅳ$9.63$-$0.46$Ⅱ$2016-07-28  $!!166$12:00:00  $8.02$Ⅰ$-$-$8.34$Ⅳ$9.77$-$0.65$Ⅲ$2016-07-27  $!!167$08:00:00  $8.52$Ⅰ$5.52$Ⅲ$0.29$Ⅰ$9999$-$0.19$Ⅱ$2016-07-27  $!!168$16:00:00  $9.26$劣Ⅴ$10.60$Ⅰ$2.79$Ⅱ$9999$-$0.10$Ⅰ$2016-07-26  $!!172$12:00:00  $7.40$Ⅰ$6.67$Ⅱ$-$-$9999$-$0.07$Ⅰ$2014-10-13  $!!173$08:00:00  $8.27$Ⅰ$7.19$Ⅱ$1.20$Ⅰ$9999$-$-$-$2016-07-27  $!!175$12:00:00  $8.61$Ⅰ$7.41$Ⅱ$2.05$Ⅱ$9999$-$0.40$Ⅱ$2016-07-27  $!!176$12:00:00  $6.81$Ⅰ$2.71$Ⅴ$10.01$Ⅴ$9999$-$0.07$Ⅰ$2016-07-13  $!!177$00:00:00  $8.96$Ⅰ$7.84$Ⅰ$1.51$Ⅰ$9999$-$0.07$Ⅰ$2016-07-28  $!!178$16:00:00  $7.64$Ⅰ$6.28$Ⅱ$2.60$Ⅱ$9999$-$0.20$Ⅱ$2016-07-26  $!!179$20:00:00  $8.76$Ⅰ$6.27$Ⅱ$3.50$Ⅱ$9999$-$0.12$Ⅰ$2016-07-27  $!!180$08:00:00  $6.75$Ⅰ$11.99$Ⅰ$4.95$Ⅲ$9999$-$0.14$Ⅰ$2016-07-27  $!!181$00:00:00  $8.18$Ⅰ$6.76$Ⅱ$3.52$Ⅱ$9999$-$0.25$Ⅱ$2016-07-28  $!!182$12:00:00  $8.54$Ⅰ$6.26$Ⅱ$5.35$Ⅲ$-$-$0.11$Ⅰ$2016-07-27  $!!183$12:00:00  $7.46$Ⅰ$8.03$Ⅰ$3.10$Ⅱ$9999$-$0.06$Ⅰ$2016-05-31  $!!184$08:00:00  $7.26$Ⅰ$3.97$Ⅳ$0.54$Ⅰ$9999$-$0.42$Ⅱ$2016-07-27  $!!185$04:00:00  $9.22$劣Ⅴ$6.63$Ⅱ$-$-$9999$-$0.70$Ⅲ$2016-07-27  $!!186$12:00:00  $7.71$Ⅰ$6.37$Ⅱ$3.44$Ⅱ$9999$-$-$-$2016-07-26  $!!187$08:00:00  $7.06$Ⅰ$7.80$Ⅰ$-$-$9999$-$0.91$Ⅲ$2016-07-27  $!!188$13:00:00  $7.04$Ⅰ$6.57$Ⅱ$9.40$Ⅳ$9999$-$0.23$Ⅱ$2016-07-27  $!!189$00:00:00  $7.13$Ⅰ$6.29$Ⅱ$1.20$Ⅰ$9999$-$0.04$Ⅰ$2016-07-28  $!!190$04:00:00  $7.53$Ⅰ$4.55$Ⅳ$2.19$Ⅱ$9999$-$0.18$Ⅱ$2016-07-27  $!!191$00:00:00  $7.60$Ⅰ$8.34$Ⅰ$5.29$Ⅲ$9999$-$0.19$Ⅱ$2016-07-28  $!!192$04:00:00  $7.87$Ⅰ$5.54$Ⅲ$10.00$Ⅳ$9999$-$-$-$2016-07-27  $!!193$08:00:00  $7.34$Ⅰ$4.56$Ⅳ$1.80$Ⅰ$9999$-$0.05$Ⅰ$2016-07-27  $!!194$12:00:00  $7.70$Ⅰ$8.72$Ⅰ$1.41$Ⅰ$9999$-$0.23$Ⅱ$2016-06-02  $!!195$00:00:00  $7.74$Ⅰ$6.88$Ⅱ$-$-$9999$-$-$-$2016-07-28  $!!196$08:00:00  $7.74$Ⅰ$10.95$Ⅰ$7.92$Ⅳ$9999$-$0.15$Ⅰ$2016-07-27  $!!197$00:00:00  $8.86$Ⅰ$7.30$Ⅱ$4.65$Ⅲ$9999$-$0.21$Ⅱ$2016-07-28  $!!198$00:00:00  $7.56$Ⅰ$13.90$Ⅰ$1.50$Ⅰ$9999$-$0.03$Ⅰ$2016-07-28  $!!199$00:00:00  $8.22$Ⅰ$5.84$Ⅲ$0.71$Ⅰ$9999$-$0.12$Ⅰ$2016-07-28  $!!200$12:00:00  $8.79$Ⅰ$7.95$Ⅰ$5.20$Ⅲ$9999$-$0.21$Ⅱ$2012-12-31  $!!201$08:00:00  $7.36$Ⅰ$2.43$Ⅴ$11.74$Ⅴ$9999$-$1.05$Ⅳ$2016-07-27  $!!202$08:00:00  $6.54$Ⅰ$5.56$Ⅲ$3.06$Ⅱ$9999$-$-$-$2016-06-14  $!!203$08:00:00  $8.28$Ⅰ$11.17$Ⅰ$1.43$Ⅰ$9999$-$0.12$Ⅰ$2016-07-27  $!!204$04:00:00  $7.98$Ⅰ$12.57$Ⅰ$7.52$Ⅳ$8.27$-$0.19$Ⅱ$2016-07-27  $!!205$04:00:00  $7.77$Ⅰ$8.21$Ⅰ$5.38$Ⅲ$9999$-$0.11$Ⅰ$2016-07-27  $!!206$08:00:00  $7.26$Ⅰ$6.83$Ⅱ$0.53$Ⅰ$0.68$-$-$-$2016-07-27  $!!207$00:00:00  $8.43$Ⅰ$7.10$Ⅱ$5.20$Ⅲ$-$-$0.24$Ⅱ$2016-07-28  $!!208$04:00:00  $7.49$Ⅰ$0.49$劣Ⅴ$-$-$-$-$0.08$Ⅰ$2016-07-27  $!!209$16:00:00  $9.53$劣Ⅴ$10.38$Ⅰ$8.75$Ⅳ$33.44$-$0.04$Ⅰ$2016-07-27  $!!210$16:00:00  $10.21$劣Ⅴ$15.33$Ⅰ$13.82$Ⅴ$10.16$-$0.16$Ⅱ$2016-07-27  $!!211$00:00:00  $8.94$Ⅰ$10.13$Ⅰ$6.23$Ⅳ$18.35$-$-$-$2016-07-28  $!!212$08:00:00  $8.78$Ⅰ$9.86$Ⅰ$12.26$Ⅴ$17.38$-$0.17$Ⅱ$2016-07-27  $!!213$00:00:00  $8.56$Ⅰ$9.15$Ⅰ$-$-$10.99$-$0.43$Ⅱ$2016-07-28  $!!214$04:00:00  $7.38$Ⅰ$10.91$Ⅰ$-$-$38.12$-$1.24$Ⅳ$2016-07-27  $!!215$00:00:00  $7.49$Ⅰ$6.18$Ⅱ$9.61$Ⅳ$9999$-$0.16$Ⅱ$2016-07-28  $!!216$20:00:00  $7.98$Ⅰ$7.08$Ⅱ$1.18$Ⅰ$1.09$-$-$-$2016-07-27  $!!217$04:00:00  $7.68$Ⅰ$8.32$Ⅰ$7.54$Ⅳ$7.43$-$0.19$Ⅱ$2016-07-27  $!!218$00:00:00  $7.11$Ⅰ$1.93$劣Ⅴ$5.5$Ⅲ$9999$-$0.58$Ⅲ$2016-07-28  $!!219$00:00:00  $9.13$劣Ⅴ$10.00$Ⅰ$4.67$Ⅲ$17.82$-$0.19$Ⅱ$2016-07-28  $!!220$10:00:00  $-$-$-$-$9999$-$9999$-$-$-$2016-07-27  $!!1701860338$14:00:00  $-$-$-$-$9999$-$9999$-$-$-$2014-05-09  $!!",
+//                    "5$重庆朱沱!!8$浙江湖州新塘港!!12$河南济源小浪底!!14$黑龙江肇源!!16$湖南岳阳城陵矶!!18$江苏南京林山!!19$江苏盱眙!!20$江苏邳苍!!32$安徽阜南王家坝!!53$北京古北口!!54$天津果河桥!!55$河南周口鹿邑付桥闸!!56$安徽安庆皖河口!!57$辽宁铁岭朱尔山!!58$安徽淮南石头埠!!59$安徽界首七渡口!!60$天津三岔口!!61$辽宁盘锦兴安!!62$云南昆明西苑隧道!!63$广东广州长洲!!64$广东清远七星岗!!65$湖北武汉宗关!!66$河北张家口八号桥!!67$吉林长春松花江村!!68$吉林白城白沙滩!!69$黑龙江同江!!70$辽宁营口辽河公园!!72$河北石家庄岗南水库!!73$北京门头沟沿河城!!74$四川攀枝花龙洞!!75$湖北宜昌南津关!!76$江西九江河西水厂!!77$江苏无锡沙渚!!78$安徽巢湖裕溪口!!79$广西梧州界首!!80$广西南宁老口!!81$甘肃兰州新城桥!!83$内蒙古包头画匠营子!!84$山西运城河津大桥!!85$山东济南泺口!!97$浙江嘉兴王江泾!!103$江苏苏州西山!!104$浙江杭州鸠坑口!!105$安徽合肥湖滨!!106$安徽淮北小王桥!!107$湖南岳阳岳阳楼!!108$山西忻州万家寨!!109$安徽蚌埠蚌埠闸!!110$湖南长沙新港!!111$江苏宜兴兰山嘴!!112$江苏扬州三江营!!113$宁夏中卫新墩!!114$江西九江蛤蟆石!!115$山东临沂清泉寺!!116$辽宁抚顺大伙房水库!!117$四川宜宾凉姜沟!!118$四川泸州沱江二桥!!119$四川乐山岷江大桥!!120$河南驻马店班台!!121$内蒙古乌海海勃湾!!122$河南周口沈丘闸!!123$江西南昌滁槎!!124$云南昆明观音山!!125$湖北丹江口胡家岭!!126$广西贵港石嘴!!127$广西凭祥平而关!!128$福建福州白岩潭!!129$上海青浦急水港!!131$广西桂林阳朔!!132$辽宁辽阳汤河水库!!133$黑龙江黑河!!134$山东枣庄台儿庄!!135$辽宁丹东鸭绿江桥!!136$吉林延边圈河!!137$河南南阳陶岔!!138$山东聊城秤钩湾!!139$浙江嘉兴斜路港!!140$云南西双版纳橄榄坝!!141$陕西渭南潼关吊桥!!142$广东中山横栏!!143$内蒙古呼伦贝尔黑山头!!144$黑龙江抚远乌苏镇!!146$云南红河州河口!!147$山东临沂重坊桥!!149$安徽滁州小柳巷!!150$山东临沂涝沟桥!!151$安徽宿州泗县公路桥!!152$江苏泗洪大屈!!153$江苏徐州小红圈!!154$河南信阳淮滨水文站!!155$安徽亳州颜集!!156$江苏连云港大兴桥!!157$河南永城黄口!!158$四川广元清风峡!!159$安徽宿州杨庄!!161$安徽阜阳张大桥!!162$河南信阳蒋集水文站!!164$江苏徐州李集桥!!166$安徽阜阳徐庄!!167$贵州赤水鲢鱼溪!!168$湖北鄂州七星!!172$湖南岳阳鹿角!!173$湖南常德坡头!!175$湖南常德沙河口!!176$湖南益阳南嘴!!177$云南玉溪孤山!!178$宁夏石嘴山麻黄沟!!179$甘肃天水牛背!!180$吉林集安上活龙!!181$青海湟水民和桥!!182$内蒙古呼伦贝尔嵯岗!!183$内蒙古呼伦贝尔大铁桥!!184$湖南益阳万家嘴!!185$黑龙江呼玛!!186$吉林临江苇沙河!!187$吉林长白绿江村!!188$吉林敦化新甸!!189$吉林溪浪口!!190$海南昌化江!!191$黑龙江虎林!!192$海南海口铁桥村!!193$江西九江都昌!!194$云南德宏嘎中桥!!195$吉林松原松林!!196$黑龙江嘉荫!!197$云南大理小关邑!!198$新疆额尔齐斯南湾水文站!!199$新疆63团伊犁河大桥!!200$黑龙江鸡西龙王庙!!201$吉林长春南楼!!202$海南万泉河丹村!!203$江西上饶康山!!204$黑龙江佳木斯江心岛!!205$黑龙江牡丹江口内!!206$广西防城港东兴!!207$黑龙江鸡西知一桥!!208$黑龙江鸡西档壁镇!!209$云南昆明滇池南岸!!210$云南昆明罗家营!!211$吉林延边南坪!!212$内蒙古呼伦贝尔贝尔湖!!213$黑龙江漠河北极村!!214$西藏林芝米瑞!!215$黑龙江抚远!!216$广西崇左八角电站!!217$云南保山红旗桥!!218$黑龙江哈尔滨呼兰河铁路桥!!219$云南大理洱海金河站!!220$stb!!221$stb!!",
+//                    "5$长江干流（川-渝省界）!!8$新塘港（浙-苏省界）!!12$黄河干流（水库出口）!!14$松花江干流!!16$长江干流!!18$长江干流（皖-苏省界）!!19$淮河干流（皖-苏省界）!!20$邳苍分洪道西偏泓（鲁-苏省界）!!32$淮河干流（豫-皖省界）!!53$潮河（密云水库入口）!!54$黎河（于桥水库入口）!!55$涡河（豫-皖省界）!!56$长江干流!!57$辽河干流!!58$淮河干流!!59$颖河（豫-皖省界）!!60$海河（入海口）!!61$辽河干流（入海口）!!62$湖体（草海）!!63$珠江!!64$北江!!65$汉江（入长江前）!!66$洋河（官厅水库入口）!!67$松花江干流!!68$嫩江（入松花江前）!!69$松花江干流（入黑龙江前）!!70$大辽河（入海口）!!72$库体!!73$永定河（官厅水库出口）!!74$长江干流!!75$长江干流（三峡水库出口）!!76$长江干流（鄂-赣省界）!!77$湖体!!78$湖体（东半湖）!!79$浔江（桂-粤省界）!!80$邕江!!81$黄河干流!!83$黄河干流!!84$汾河（入黄河前）!!85$黄河干流（入海口）!!97$京杭大运河（苏-浙省界）!!103$湖体!!104$新安江（皖-浙省界）!!105$湖体（西半湖）!!106$沱河（豫-皖省界）!!107$洞庭湖出口!!108$库体!!109$淮河干流（闸上）!!110$湘江（洞庭湖入口）!!111$湖体!!112$夹江（南水北调取水口）!!113$黄河干流（甘-宁省界）!!114$鄱阳湖出口!!115$沭河（鲁-苏省界）!!116$库体!!117$岷江（入长江前）!!118$沱江（入长江前）!!119$岷江（与大渡河汇合前）!!120$洪汝河（豫-皖省界）!!121$黄河干流（宁-蒙省界）!!122$沙河（闸上）!!123$赣江（鄱阳湖入口）!!124$湖体（外海）!!125$丹江口水库（库体）!!126$浔江!!127$平而河（入国境）!!128$闽江（入海口）!!129$急水港（苏-沪省界）!!131$漓江!!132$库体!!133$黑龙江干流（国界）!!134$京杭大运河（鲁-苏省界）!!135$鸭绿江（国界）!!136$图们江（国界）!!137$南水北调中线取水口!!138$卫河（豫冀鲁三省交界）!!139$斜路港河（苏-浙省界）!!140$澜沧江（出国境）!!141$渭河（入黄河前）!!142$西江（入海口）!!143$额尔古纳河（国界）!!144$乌苏里江（国界）!!146$红河（出国境）!!147$沂河（鲁-苏省界）!!149$淮河干流（皖-苏省界）!!150$白马河（鲁-苏省界）!!151$新汴河（皖-苏省界）!!152$新濉河（皖-苏省界）!!153$武河（鲁-苏省界）!!154$淮河干流（豫-皖省界）!!155$包河（豫-皖省界）!!156$新沭河（鲁-苏省界）!!157$浍河（豫-皖省界）!!158$嘉陵江（陕-川省界）!!159$奎河（苏-皖省界）!!161$黑茨河（豫-皖省界）!!162$史灌河（豫-皖省界）!!164$沿河（苏-鲁省界）!!166$泉河（豫-皖省界）!!167$!!168$!!172$!!173$!!175$!!176$!!177$!!178$!!179$!!180$!!181$!!182$!!183$!!184$!!185$!!186$!!187$!!188$!!189$!!190$!!191$!!192$!!193$!!194$!!195$!!196$!!197$!!198$!!199$!!200$!!201$!!202$!!203$!!204$!!205$!!206$界河!!207$!!208$!!209$!!210$!!211$!!212$!!213$!!214$西藏林芝!!215$抚远!!216$国界河流!!217$!!218$!!219$!!220$!!221$!!"];
+                var DataList = list[0].value.split('!!');
+                var NameList = list[1].value.split('!!');
+                var SourceList = list[2].value.split('!!');
+                var DataListFin = [];
+                var NameListFin = [];
+                var SourceListFin = [];
+
+                for (var i=0;i<NameList.length;i++) {
+                    var DataInter = DataList[i+1].split('$');
+                    var NameInter = NameList[i].split('$');
+                    var SourceInter = SourceList[i].split('$');
+                    NameListFin.push(NameInter); //Parsing Name List
+                    DataListFin.push(DataInter); //Parsing Core Data List
+                    SourceListFin.push(SourceInter); //Parsing Source Name List (Called Detail)
+                }
+                console.log(list);
+
+                //There are 14 Fields for DataListFin
+                //Field 0: ID
+                //Field 1: Time
+                //Field 2: pH
+                //Field 3: Level of pH?
+                //Field 4: Solubility
+                //Field 5: Level of Solubility
+                //Field 6: Ammonia Content
+                //Field 7: Level of Ammonia?
+                //Field 8: Permanganate Content
+                //Field 9: Level of Permanganate
+                //Field 10: TOC
+                //Field 11: TOC level
+                //Field 12: Date
+                //Field 13: --Ignore this
+
+                //Order the list according to basins for the basin preview
+
+                var LocalizedBasin = BasinArray;
+
+                LocalizedBasin.forEach(function (d) {
+                    d.info.forEach(function (de) {
+                        DataListFin.forEach(function (row) {
+                            if (row[0] == de[0]) {
+                                var BasinRealTime = {
+                                    pH: +row[2],
+                                    sol: +row[4],
+                                    amm: +row[6],
+                                    per: +row[8],
+                                    toc: +row[10]
+                                };
+                                de.push(BasinRealTime);
+                            }
+                        })
+                    })
+                });
+
+
+                var MyMap = L.map('MapMain').setView([30.25, 120.166667], 9);
+
+                L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                    maxZoom: 18,
+                    id: 'adityarj.0mbl5ab1',
+                    accessToken: 'pk.eyJ1IjoiYWRpdHlhcmoiLCJhIjoiY2lwczQ0dzFmMDJqcWZsbTI3bDJld2JoNSJ9.mpkJWXaUYoE1jtAn6a9Mvw'
+                }).addTo(MyMap);
+
+                var circles = new Array(200);
+
+                var color = ['#bbd8fa','#e1c3ff','#fad6fa','#ffead7','#ffeacb','#fce0c8','#a7e4ff','#ffbfda',
+                    '#def5fb','#ccc7ff','#fbc0d6','#faf7d8','#faf7d8','#bbd8fa','#bbd8fa','#bbd8fa','#bbd8fa','#e1c3ff','#fad6fa','#ffead7','#ffeacb','#fce0c8'];
+
+                var incr = 0;
+                var count =0;
+
+                var PolyLines = [];
+                var PolyLineCountList = [];
+                var CountList = {};
+
+                //Generate Polylines for the map according to the basin names
+                BasinMarkup.forEach(function (d) {
+                    var LatLongArray = [];
+                    d.forEach(function (de) {
+                        de.info.forEach(function (row) {
+                            LatLongArray.push(row[1]);
+                        });
+                        var Polyline = L.polyline(
+                                LatLongArray, {
+                                    color: color[incr],
+                                    weight: 2,
+                                    opacity: 0.7,
+                                    lineJoin: 'round'
+                                }
+                        ).addTo(MyMap);
+                        LatLongArray = [];
+                        PolyLines.push(Polyline);
+                        PolyLineCountList.push(count);
+                        count++;
+                    });
+                    CountList[incr] = PolyLineCountList;
+                    PolyLineCountList = [];
+                    incr++;
+                });
+
+
+                function LabelHeader(id) {
+                    $('#IDRealTime').text(DataListFin[id][0]);
+                    $('#pHLevel').text(DataListFin[id][2]);
+                    $('#pHIndex').text(DataListFin[id][3]);
+
+                    if (DataListFin[id][3]=='Ⅴ' || DataListFin[id][3]=='劣Ⅴ') {
+                        $('#pHRow').attr('class','table-danger');
+                    }
+                    else if (DataListFin[id][3]=='Ⅳ') {
+                        $('#pHRow').attr('class','table-warning');
+                    }
+                    else {
+                        $('#pHRow').attr('class','');
+                    }
+
+                    $('#SolLevel').text(DataListFin[id][4]);
+                    $('#SolIndex').text(DataListFin[id][5]);
+
+                    if (DataListFin[id][5]=='Ⅴ'|| DataListFin[id][5]=='劣Ⅴ') {
+                        $('#SolRow').attr('class','table-danger');
+                    }
+                    else if (String(DataListFin[id][5])=='Ⅳ') {
+                        $('#SolRow').attr('class','table-warning');
+                    }
+                    else {
+                        $('#SolRow').attr('class','');
+                    }
+
+                    $('#AmmLevel').text(DataListFin[id][6]);
+                    $('#AmmIndex').text(DataListFin[id][7]);
+
+                    if (DataListFin[id][7]=='Ⅴ'|| DataListFin[id][7]=='劣Ⅴ') {
+                        $('#AmmRow').attr('class','table-danger');
+                    }
+                    else if (DataListFin[id][7]=='Ⅳ') {
+                        $('#AmmRow').attr('class','table-warning');
+                    }
+                    else {
+                        $('#AmmRow').attr('class','');
+                    }
+
+                    $('#PermLevel').text(DataListFin[id][8]);
+                    $('#PermIndex').text(DataListFin[id][9]);
+
+                    if (DataListFin[id][9]=='Ⅴ'|| DataListFin[id][9]=='劣Ⅴ') {
+                        $('#PermRow').attr('class','table-danger');
+                    }
+                    else if (DataListFin[id][9]=='Ⅳ') {
+                        $('#PermRow').attr('class','table-warning');
+                    }
+                    else {
+                        $('#PermRow').attr('class','');
+                    }
+
+                    $('#TOCLevel').text(DataListFin[id][10]);
+                    $('#TOCIndex').text(DataListFin[id][11]);
+                    if (DataListFin[id][11]=='Ⅴ' || DataListFin[11]=='劣Ⅴ') {
+                        $('#TOCRow').attr('class','table-danger');
+                    }
+                    else if (DataListFin[id][11]=='Ⅳ') {
+                        $('#TOCRow').attr('class','table-warning');
+                    }
+                    else {
+                        $('#TOCRow').attr('class','');
+                    }
+
+                    $('#placeName').text(NameListFin[id][1]);
+                    $('#placeDetail').text(SourceListFin[id][1]);
+                    $('#TimeVal').text(moment(DataListFin[id][1],'HH').format('hh A'));
+
+                    var DateVal = moment(DataListFin[id][12]).format("MMMM Do, 'YY");
+
+                    if (moment().diff(moment(DataListFin[id][12]),'days')<2) {
+                        $('#LabelRealTime').attr('class','label label-primary');
+                        $('#LabelRealTime').text('Real Time');
+                    }
+                    else if (moment().diff(moment(DataListFin[id][12]),'days')<=7) {
+                        $('#LabelRealTime').attr('class','label label-success');
+                        $('#LabelRealTime').text('Recent');
+                    }
+                    else if (moment().diff(moment(DataListFin[id][12]),'days')>7) {
+                        $('#LabelRealTime').attr('class','label label-warning');
+                        $('#LabelRealTime').text('Dated');
+                    }
+
+                    $('#DateVal').text(DateVal);
+
+                }
+                //For Loop to generate map points as well as data list
+                for(i=0;i<DynamicCoordinates.length && i<DataListFin.length;i++) {
+
+                    var row = $('<tr />',{
+                        dblclick: function () {
+                            $(this).effect('highlight',2000);
+                            var ID = $(this).children('th').text();
+                            var Latlng = DynamicCoordinates[ID-1][1];
+                            //var Latlng = [circles[ID-1]._latlng.lat,circles[ID-1]._latlng.lng];
+                            MyMap.setView(Latlng,9);
+//                            circles[ID-1].openPopup();
+                            LabelHeader(ID-1);
+                            $('#MainFrameData').hide('slide',{direction: 'left'},200);
+                            $('#FrameMain').delay(200).show('slide',{direction: 'right'},200);
+                        }
+                    }).appendTo('#TableDataList');
+
+                    $('<th />',{
+                        scope: 'row',
+                        text: i+1
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: NameListFin[i][1]
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: SourceListFin[i][1]
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: DataListFin[i][1]
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: DataListFin[i][12]
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: function() {
+                            if (DataListFin[i][2]=='9999')
+                                return '-';
+                            else
+                                return DataListFin[i][2];
+                        } //pH
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: DataListFin[i][3]
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: function() {
+                            if (DataListFin[i][4]=='9999')
+                                return '-';
+                            else
+                                return DataListFin[i][4];
+                        } //Solubility
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: DataListFin[i][5]
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: function() {
+                            if (DataListFin[i][6]=='9999')
+                                return '-';
+                            else
+                                return DataListFin[i][6];
+                        } //Ammonia
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: DataListFin[i][7]
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: function() {
+                            if (DataListFin[i][8]=='9999')
+                                return '-';
+                            else
+                                return DataListFin[i][8];
+                        } //Permanganate
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: DataListFin[i][9]
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: function() {
+                            if (DataListFin[i][10]=='9999')
+                                return '-';
+                            else
+                                return DataListFin[i][10];
+                        } //TOC
+                    }).appendTo(row);
+                    $('<td />',{
+                        text: DataListFin[i][11]
+                    }).appendTo(row);
+
+//                    var PopupCity = L.popup({minWidth: 150})
+//                            .setContent(
+//                            "<strong>"+NameListFin[i][1]+"</strong><br>"+
+//                            SourceListFin[i][1]+"<br>");
+//
+//                    circles[i] = new L.circleMarker([DynamicCoordinates[i][1][0],DynamicCoordinates[i][1][1]], {
+//                        color: 'red',
+//                        fillColor: 'red',
+//                        fillOpacity: 0.8,
+//                        id: i
+//                    }).bindPopup(PopupCity)
+//                            .on('click',function (e) {
+//
+//                                LabelHeader(e.target._myID);
+//
+//                            }).addTo(MyMap);
+//
+//                    circles[i]._myID = i;
+
+                }
+
+                //Generate Buttons for the selection and other such map interactivity
+                var FormElement = $('<form />', {
+                    role: 'form'
+                }).css('padding-top','15px')
+                        .css('padding-bottom','10px')
+                        .appendTo('#SettingsMain');
+
+                var PollutionDataButtonList = [
+                        ['pH',2,9],
+                        ['Solubility',4,4],
+                        ['Ammonium',6,7],
+                        ['Permanganate',8,8],
+                        ['TOC',10,1],
+                        ['All',0]
+                ];
+
+
+                for (var m=0;m<6;m++) {
+                    var ButtonElement = $('<div />', {
+                        class: 'checkbox checkbox-info',
+                        css: {
+                            display: 'inline-block'
+                        }
+                    }).appendTo(FormElement);
+
+                    if (m==0) {
+                         InputElement = new $('<input />', {
+                            id: 'But' + m,
+                            type: 'radio',
+                            name: 'options',
+                            checked: true,
+                            click: function () {
+                                var m = $(this).attr('id').substr(-1);
+                                GenerateMapPointsSVG(PollutionDataButtonList[m])
+                            }
+                        }).appendTo(ButtonElement);
+
+                    } else {
+                         InputElement = new $('<input />', {
+                            id: 'But' + m,
+                            type: 'radio',
+                            name: 'options',
+                            click: function () {
+                                var m = $(this).attr('id').substr(-1);
+                                GenerateMapPointsSVG(PollutionDataButtonList[m])
+                            }
+                        }).appendTo(ButtonElement);
+                    }
+
+                    var LabelElement = $('<label />', {
+                        for: InputElement.attr('id'),
+                        text: PollutionDataButtonList[m][0]
+                    }).appendTo(ButtonElement);
+                }
+
+
+                var FormElementBasin = $('<div />', {
+                    class: 'dropdown'
+                }).css('display','inline-block')
+                        .css('height','auto')
+                        .css('width','auto')
+                        .css('margin-left','10px')
+                        .css('font-size','10px')
+                        .css('margin-top','10px')
+                        .appendTo('#SettingsMain');
+
+                var DropDownElement = $('<button />', {
+                    type: 'button',
+                    class: 'btn btn-secondary dropdown-toggle'
+                }).css('font-size','16px').attr('data-toggle','dropdown')
+                        .appendTo(FormElementBasin);
+
+                $('<span />', {
+                    class: 'caret',
+                    text: 'Basin'
+                }).appendTo(DropDownElement);
+
+                var DropDownList = $('<ul />', {
+                    class: 'dropdown-menu'
+                }).appendTo(FormElementBasin);
+
+                var idPrevious = 'All';
+
+                var Incre = 0;
+
+                var AllElement = $('<li />').appendTo(DropDownList);
+
+                //Generating that special bugger of a dropdown element
+                $('<a />', {
+                    class: 'dropdown-item',
+                    click: function () {
+                        d3.select('#MagnetPairs').remove();
+                        if (idPrevious!='All') {
+                            CountList[idPrevious].forEach(function (d) {
+                                PolyLines[d].setStyle({
+                                    color: color[idPrevious],
+                                    opacity: 0.7
+                                });
+                            });
+                        }
+
+                        idPrevious = 'All';
+                    },
+                    id: 'All',
+                    text: 'All'
+                }).css('height','auto')
+                        .css('color','white')
+                        .css('background-color','#5a6b72')
+                        .appendTo(AllElement);
+
+                //Generating each element for the dropdown that is not All
+                BasinArray.forEach(function (d) {
+                    var element = $('<li />', {
+                        class: 'dropdown-item',
+                        click: function () {
+
+                            //All this is doing is highlighting the basin that is in focus
+                            if (idPrevious!='All') {
+                                CountList[idPrevious].forEach(function (d) {
+                                    PolyLines[d].setStyle({
+                                        color: color[idPrevious],
+                                        opacity: 0.7
+                                    });
+                                });
+                            }
+
+                            var Id = +$(this).attr('id').substring(2);
+                            CountList[Id].forEach(function (d) {
+                                PolyLines[d].setStyle({
+                                    color: '#fcfc64',
+                                    opacity: 1.0,
+                                    transition: 'color 2s'
+                                });
+                            });
+
+                            $('#LabelDropDown').text(function () {
+                                var Text = d.basin.split('-').join('');
+                                return Text.charAt(0).toUpperCase() + Text.substr(1);
+                            }).parent().attr('id','h'+Id);
+
+                            var zoom = 11;
+                            if (BasinArray[Id].info.length>=3) {
+                                zoom = 6;
+                            } else if(BasinArray[Id].info.length>1){
+                                zoom = 9;
+                            }
+                            MyMap.setView(BasinArray[Id].info[0][1],zoom);
+                            idPrevious = Id;
+
+                            //Call function that will draw an svg magnet pair below the map
+                            GenerateMagnetPairs(BasinArray[Id],Id);
+                        },
+                        id: 'Ba'+Incre
+                    }).css('height','30px')
+                            .css('background-color','#5a6b72')
+                            .appendTo(DropDownList);
+
+                    var ParentEl = $('<a />', {
+
+                    }).appendTo(element);
+
+                    $('<div />', {
+                        width: '10px',
+                        height: '10px'
+                    }).css('display','inline-block').css('margin-left','5px').css('background-color',color[Incre]).appendTo(ParentEl);
+
+                    $('<div />', {
+                        text: function () {
+                            var Text = d.basin.split('-').join('');
+                            return Text.charAt(0).toUpperCase() + Text.substr(1);
+                        }
+                    }).css('display','inline-block').css('color','white').css('margin-left','20px').appendTo(ParentEl);
+                    Incre++;
+                });
+
+                var LabelDropH = $('<h4 />', {
+
+                }).css('display','inline-block').appendTo('#SettingsMain');
+
+                var LabelDropDown = $('<span />', {
+                    class: 'label label-primary',
+                    id: 'LabelDropDown',
+                    text: 'Select Basin '
+                }).css('display','inline-block')
+                        .css('font-size','14px')
+                        .css('width','180px')
+                        .css('margin-left','10px')
+                        .appendTo(LabelDropH);
+
+                var ButtonApplyBasinInfo = $('<button />', {
+                    class: 'btn btn-secondary',
+                    id: 'ButtonApplyBasin',
+                    text: 'View Past Info',
+                    click: function () {
+
+                        //This function lets to display past info for the selected Real Time Basin
+                        $('#ProvinceMap').attr('display','none');
+                        $('#BasinMap').attr('display',null);
+
+                        var numBasin = +$('#LabelDropDown').parent().attr('id').substr(1);
+
+                        $('#RainfallDataContainer').fadeOut(200);
+                        $('#AnalysisDataContainer').fadeOut(200).delay(100);
+                        $('#PollutionDataContainer').slideDown(400);
+
+                        $('#FrameMain').hide('slide', {direction: 'left'}, 200);
+                        $('#FrameSecondary').delay(200).show('slide', {direction: 'right'}, 200);
+
+                        d3.select('#Bu'+ (numBasin + 1)).select('circle').style('fill','#FF7C4C').style('opacity',1);
+
+                        d3.select('#SVGPH').remove();
+                        d3.select('#SVGSL').remove();
+                        d3.select('#SVGAM').remove();
+                        d3.select('#SVGPM').remove();
+                        d3.select('#SVGTC').remove();
+                        d3.select('#CBList').remove();
+                        d3.select('#HeaderCheckBox').remove();
+                        d3.selectAll('.infoPolMap').remove();
+                        d3.select('#BlankSpace').remove();
+
+                        DataSelector(numBasin,'B');
+                        //Generate a subplot of the realtime data with respect to the basin data in the past;
+                        GenerateBasinRealTimeSet(LocalizedBasin[numBasin]);
+
+                    }
+                }).css('margin-left','10px')
+                        .css('margin-bottom','10px')
+                        .css('margin-top','10px')
+                        .css('font-size','12px')
+                        .appendTo('#SettingsMain');
+
+                var CheckBoxBasinAll = $('<form />', {
+                    role: 'form'
+                }).css('padding-top','15px').css('margin-left','10px').appendTo('#SettingsMain');
+
+                var ButtonBasinAll = $('<div />', {
+                    class: 'checkbox checkbox-info'
+                }).appendTo(CheckBoxBasinAll);
+
+                $('<input />', {
+                    type: 'checkbox',
+                    name: 'Basin',
+                    id: 'InputBasinAll',
+                    checked: true,
+                    click: function () {
+                        var opacity = 0.7;
+                        if ($(this).prop('checked')==false) {
+                            opacity = 0;
+                        }
+                        for (var i=0;i<PolyLines.length;i++) {
+                            PolyLines[i].setStyle({
+                                opacity: opacity
+                            });
+                        }
+                    }
+                }).appendTo(ButtonBasinAll);
+
+                $('<label />', {
+                    for: '#InputBasinAll',
+                    text: 'Show Basins'
+                }).appendTo(ButtonBasinAll);
+
+                GenerateMapPointsSVG(PollutionDataButtonList[0]);
+
+
+                //Below function is used to generate the magnet set
+                function GenerateMagnetPairs(Basin,ColID) {
+
+                    var BasinArraySet = [];
+
+                    Basin.info.forEach(function(bas) {
+                       BasinArraySet.push(bas[3]);
+                    });
+                    d3.select('#MagnetPairs').remove();
+
+                    var width = 840, height = 500, magnetRadius = 20;
+
+                    var keys = [
+                        {name: 'pH'},
+                        {name: 'sol'},
+                        {name: 'amm'},
+                        {name: 'per'},
+                        {name: 'toc'}
+                    ];
+
+                    var drag = d3.behavior.drag()
+                            .on('drag',dragmove)
+                            .on('dragend',updateDust);
+
+                    function dragmove(d) {
+
+                        d3.select('#TextMagnetMove').transition().duration(200).remove();
+
+                        var ID = d3.select(this).attr('id').substr(2);
+
+                        d3.select(this)
+                                .attr('cx',d.x = Math.max(magnetRadius,Math.min(width - magnetRadius,d3.event.x)))
+                                .attr('cy',d.y = Math.max(magnetRadius,Math.min(height - magnetRadius,d3.event.y)));
+
+                        d3.select('#bas'+ID)
+                                .attr('dx',d.x)
+                                .attr('dy',d.y);
+                    }
+
+                    function updateDust() {
+                        d3.selectAll('.dust-circle')
+                                .transition()
+                                .duration(500)
+                                .ease('elastic')
+                                .attr('cx',function (d,i) {
+                                    var x = d.x;
+                                    keys.forEach(function (key) {
+                                        var scale = '';
+                                        var val = key.name;
+                                        var dustVal = d[val];
+                                        if (+dustVal == 9999) {
+                                            dustVal = 0;
+                                        }
+                                        var DiffX = key.x - x;
+                                        if (key.name == 'sol')
+                                             scale = d3.scale.linear().domain([key.min,key.max]).range([0.9,0.1]);
+                                        else
+                                             scale = d3.scale.linear().domain([key.min,key.max]).range([0.1,0.9]);
+                                        var ChangeVar = scale(dustVal);
+                                        x+=DiffX*ChangeVar;
+                                    });
+
+                                    d3.select('#BT'+i).attr('dx',x);
+                                    
+                                    return x;
+                                })
+                                .attr('cy',function (d,i) {
+                                    var y = d.y;
+                                    keys.forEach(function (key) {
+                                        var val = key.name;
+                                        var dustVal = d[val];
+                                        if (+dustVal == 9999) {
+                                            dustVal = null;
+                                        }
+                                        var DiffX = key.y - y;
+                                        var scale = d3.scale.linear().domain([key.min,key.max]).range([0.1,0.9]);
+                                        var ChangeVar = scale(dustVal);
+                                        y+=DiffX*ChangeVar;
+                                    });
+
+                                    d3.select('#BT'+i).attr('dy',y).attr('transform','translate(10,10)');
+
+                                    return y;
+                                });
+                    }
+
+
+                    var activeMagnets = [];
+
+
+                    keys.forEach(function (d) {
+                        if (d.name == 'sol') {
+                            d.min = d3.max(BasinArraySet,function (de) {
+                                if (de[d.name]==9999) {
+                                    return null;
+                                } else
+                                    return de[d.name];
+                            });
+                            d.max = d3.min(BasinArraySet,function (de) {
+                                if (de[d.name]==9999) {
+                                    return null;
+                                } else
+                                    return de[d.name];
+                            });
+                        }
+                        else {
+                                d.min = d3.min(BasinArraySet,function (de) {
+                                if (de[d.name]==9999) {
+                                    return null;
+                                } else
+                                    return de[d.name];
+                                });
+                            d.max = d3.max(BasinArraySet,function (de) {
+                                if (de[d.name]==9999) {
+                                    return null;
+                                } else
+                                    return de[d.name];
+                            });
+                        }
+
+                        d.active = true;
+                        d.fill = '#2e4593';
+                    });
+
+                    var svg = d3.select('#BasinMagnets').append('svg')
+                            .attr('id','MagnetPairs')
+                            .attr('width',width)
+                            .attr('height',height)
+                            .attr('style','padding: 10px 10px');
+
+                    svg.append('rect')
+                            .attr('width',width)
+                            .attr('height',height)
+                            .attr('fill','#0E171B');
+
+                    var magnets = svg.selectAll('.magnet-group')
+                            .data(keys)
+                            .enter()
+                            .append('g')
+                            .attr('class','magnet-group');
+
+                    magnets.append('circle')
+                            .attr('class','magnet-circle')
+                            .attr('id',function (d,i) {
+                                return 'bs'+i;
+                            })
+                            .attr('r',magnetRadius)
+                            .attr('cx',function (d,i) {
+                                d.x = 50+50*i;
+                                return d.x;
+                            })
+                            .attr('cy',function (d) {
+                                d.y = 50;
+                                return d.y
+                            })
+                            .attr('fill','#2e4593')
+                            .call(drag);
+
+                    magnets.append('text')
+                            .attr('fill','white')
+                            .style('font-family','Lato Black')
+                            .style('font-size','12px')
+                            .style('user-select','none')
+                            .attr('text-anchor','middle')
+                            .attr('id',function (d,i) {
+                                return 'bas'+i;
+                            })
+                            .attr('dx',function (d,i) {
+                                d.x = 50+50*i;
+                                return d.x;
+                            })
+                            .attr('dy',50)
+                            .text(function (d) {
+                                return d.name;
+                            });
+
+                    var textbox = svg.append('text')
+                            .attr('fill','white')
+                            .style('font-family','Lato')
+                            .style('font-size','12px')
+                            .attr('id','TextMagnetMove')
+                            .attr('dx',50)
+                            .attr('dy',100)
+                            .text('Drag a magnet to begin');
+
+                    var dust = svg.selectAll('.dust-group')
+                            .data(BasinArraySet)
+                            .enter()
+                            .append('g')
+                            .attr('class','dust-group');
+
+                    dust.append('circle')
+                            .attr('class','dust-circle')
+                            .on('mouseover',function(d,i) {
+                                d3.select('#BT'+i).transition().duration(200).style('opacity',1);
+                            })
+                            .on('mouseout',function(d,i) {
+                                d3.select('#BT'+i).transition().duration(200).style('opacity',0);
+                            })
+                            .on('click',function (d,i) {
+                                d3.selectAll('.dust-circle').attr('fill',color[ColID]);
+                                d3.select(this).attr('fill','#39FF14');
+                                console.log(Basin.info[i][0]);
+
+                                var ID = Basin.info[i][0];
+
+                                info.forEach(function (data) {
+                                    if (data[0] == ID) {
+                                        LabelHeader(info.indexOf(data));
+                                        NewIDHighlight = info.indexOf(data);
+                                    }
+                                });
+
+                                clearInterval(GlobalInterval,function () {
+                                    d3.select('#a'+NewIDHighlight).select('circle').style('fill',OldStyleColor)
+                                });
+                                OldStyleColor = d3.select('#a'+NewIDHighlight).select('circle').style('fill');
+                                GlobalInterval = setInterval(changeColor,500);
+
+
+                                function changeColor() {
+                                    var colorVar = d3.select('#a'+NewIDHighlight).select('circle');
+                                    if (colorVar.style('opacity') == 0.99)
+                                            colorVar.transition().duration(100).style('fill',OldStyleColor).style('opacity',1);
+                                    else
+                                            colorVar.transition().duration(100).style('fill','#39FF14').style('opacity',0.99);
+                                }
+
+                            })
+                            .attr('r',5)
+                            .attr('cx',function (d,i) {
+                                d.x = 0;
+                                return d.x;
+                            })
+                            .attr('cy',function (d) {
+                                d.y = 0;
+                                return d.y;
+                            })
+                            .attr('fill',function () {
+                                return color[ColID];
+                            });
+
+                    dust.append('text')
+                            .attr('class','id-labels')
+                            .attr('id',function(d,i) {
+                                return 'BT'+i;
+                            })
+                            .text(function(d,i) {
+                                return Basin.info[i][0];
+                            })
+                            .style('fill','white')
+                            .style('opacity',0)
+                            .attr('dx',0)
+                            .attr('dy',0)
+                }
+                
+                function GenerateBasinRealTimeSet(Basin) {
+
+                    d3.select('#BasinRealTimeDataContainer').remove();
+
+                    var Parent = d3.select('#BasinRealTimeData').append('div')
+                            .attr('class','container')
+                            .attr('id','BasinRealTimeDataContainer')
+                            .style('background-color','#c3c9ce')
+                            .style('margin-bottom','20px')
+                            .style('padding-top','10px')
+                            .style('border-radius','5px')
+                            .append('div')
+                            .attr('class','row');
+
+                    function ClassifyColor(value) {
+                        var ComputedList = [];
+
+                        //Check for pH
+                        if(value.pH == 9999 || value.pH == '-') {
+                            ComputedList.push(0);
+                        } else if (value.pH<6 || value.pH>9) {
+                            ComputedList.push(1)
+                        } else {
+                            ComputedList.push(0.01)
+                        }
+
+                        //Check for Solubility
+                        if(value.sol == 9999 || value.sol == '-') {
+                            ComputedList.push(0);
+                        } else ComputedList.push(4/value.sol);
+
+                        //Check for Ammonium
+                        if(value.amm == 9999 || value.amm == '-') {
+                            ComputedList.push(0);
+                        } else ComputedList.push(value.amm/7);
+
+                        //Check for Permanganate
+                        if(value.per == 9999 || value.per == '-') {
+                            ComputedList.push(0);
+                        } else ComputedList.push(value.per/8);
+
+                        //Check for TOC
+                        if(value.toc == 9999 || value.toc == '-') {
+                            ComputedList.push(0);
+                        } else ComputedList.push(value.toc);
+
+                        return ComputedList;
+
+                    }
+
+                    var color = d3.scale.linear()
+                            .range(["#ffffb2", "#f03b20"])
+                            .domain([0, 1]);
+
+                    var LeftTab = Parent.append('div').attr('class','col-sm-6');
+
+                    var Text = LeftTab.append('div')
+                            .style('width','100%')
+                            .style('font-family','Lato Black')
+                            .text('Real Time Data (Station ID)')
+                            .style('margin-bottom','20px');
+
+                    var CircleLayer = LeftTab.selectAll('.BasinRealTimeSet')
+                        .data(Basin.info)
+                        .enter()
+                        .append('div')
+                        .attr('class','BasinRealTimeSet')
+                        .style('width','35px')
+                        .style('height','35px')
+                        .style('margin-bottom','10px')
+                        .style('margin-right','10px')
+                        .style('border-radius','25px')
+                        .style('background-color',function (d) {
+                            var Classify = ClassifyColor(d[3]);
+
+                            if (Classify[0]>0) {
+                                return color(Classify[0]);
+                            } else return '#5f6f7';
+                        })
+                        .style('display','inline-block')
+                        .style('text-align','center')
+                        .style('line-height','35px')
+                        .style('font-size','9px')
+                        .style('font-family','Typo Grotesk Black')
+                        .style('color','#363F43')
+                        .text(function (d) {
+                            return d[0];
+                        })
+                        .on('click',function (d) {
+
+                            var ID = d[0];
+                            var value = d[3];
+                            var opacity = 0.9;
+                            var stwidth = '3.5px';
+                            var color = '#2a0d45';
+
+                            d3.select('#realTimepH').remove();
+                            d3.select('#realTimeSol').remove();
+                            d3.select('#realTimeAmm').remove();
+                            d3.select('#realTimePerm').remove();
+                            d3.select('#realTimeTOC').remove();
+
+                            //Selecting respective SVGs
+                            var svg1 = d3.select('#SVGPH');
+                            var svg2 = d3.select('#SVGSL');
+                            var svg3 = d3.select('#SVGAM');
+                            var svg4 = d3.select('#SVGPM');
+                            var svg5 = d3.select('#SVGTC');
+
+                            //Respective scale declarations for the purpose of showing the line on the graph
+                            var yPH = d3.scale.linear().range([255, 20]).domain([5, 10]);
+                            var ySol = d3.scale.linear().range([255, 20]).domain([0, 19]);
+                            var yAmm = d3.scale.linear().range([255, 20]).domain([0.01, 3]);
+                            var yPer = d3.scale.linear().range([255, 20]).domain([0.01, 20]);
+                            var yTOC = d3.scale.linear().range([255, 20]).domain([0.01, 3.01]);
+
+                            //Appending respectivee lines for referencee
+                            svg1.append('line')
+                                    .attr('id','realTimepH')
+                                    .style("stroke-dasharray", ("3, 3"))
+                                    .attr('clip-path','url(#clipPH)')
+                                    .style('stroke',color)
+                                    .style('stroke-width',stwidth)
+                                    .style('opacity',opacity)
+                                    .attr('x1',0)
+                                    .attr('y1',yPH(value.pH))
+                                    .attr('x2',550)
+                                    .attr('y2',yPH(value.pH));
+
+                            svg2.append('line')
+                                    .attr('id','realTimeSol')
+                                    .style("stroke-dasharray", ("3, 3"))
+                                    .attr('clip-path','url(#clipSol)')
+                                    .style('stroke',color)
+                                    .style('stroke-width',stwidth)
+                                    .style('opacity',opacity)
+                                    .attr('x1',0)
+                                    .attr('y1',ySol(value.sol))
+                                    .attr('x2',550)
+                                    .attr('y2',ySol(value.sol));
+
+                            svg3.append('line')
+                                    .attr('id','realTimeAmm')
+                                    .style("stroke-dasharray", ("3, 3"))
+                                    .attr('clip-path','url(#clipAmm)')
+                                    .style('stroke',color)
+                                    .style('stroke-width',stwidth)
+                                    .style('opacity',opacity)
+                                    .attr('x1',0)
+                                    .attr('y1',yAmm(value.amm))
+                                    .attr('x2',550)
+                                    .attr('y2',yAmm(value.amm));
+
+                            svg4.append('line')
+                                    .attr('id','realTimePerm')
+                                    .style("stroke-dasharray", ("3, 3"))
+                                    .attr('clip-path','url(#clipPerm)')
+                                    .style('stroke',color)
+                                    .style('stroke-width',stwidth)
+                                    .style('opacity',opacity)
+                                    .attr('x1',0)
+                                    .attr('y1',yPer(value.per))
+                                    .attr('x2',550)
+                                    .attr('y2',yPer(value.per));
+
+                            svg5.append('line')
+                                    .attr('id','realTimeTOC')
+                                    .style("stroke-dasharray", ("3, 3"))
+                                    .attr('clip-path','url(#clipTOC)')
+                                    .style('stroke',color)
+                                    .style('stroke-width',stwidth)
+                                    .style('opacity',opacity)
+                                    .attr('x1',0)
+                                    .attr('y1',yTOC(value.toc))
+                                    .attr('x2',550)
+                                    .attr('y2',yTOC(value.toc));
+
+                            //Reset all graphs first
+                            d3.selectAll('.linePer').style('stroke-width',2+'px').style('opacity',1);
+                            d3.selectAll('.lineAmm').style('stroke-width',2+'px').style('opacity',1);
+                            d3.selectAll('.linepH').style('stroke-width',2+'px').style('opacity',1);
+                            d3.selectAll('.lineSol').style('stroke-width',2+'px').style('opacity',1);
+                            d3.selectAll('.lineTOC').style('stroke-width',2+'px').style('opacity',1);
+
+                            ControlVariable = ID;
+
+                            var RestofPerGraphs = $('.linePer').not('#Per'+ID);
+                            var RestofpHGraphs = $('.linePH').not('#pH'+ID);
+                            var RestofAmmGraphs = $('.lineAmm').not('#Amm'+ID);
+                            var RestofSolGraphs = $('.lineSol').not('#Sol'+ID);
+                            var RestofTOCGraphs = $('.lineTOC').not('#TOC'+ID);
+
+                            //HighlightLabel for the respective point, but first make sure their all plain;
+                            $('.PolMapCheckBoxes').css('font-weight','normal');
+                            $('#LabelPol'+ID).css('font-weight','bold');
+
+                            //Find ID of present line and highlight all other lines of the same
+                            d3.select('#pH'+ID).style('stroke-width',4+'px');
+                            d3.selectAll(RestofpHGraphs).style('opacity',0.4);
+
+                            d3.select('#Amm'+ID).style('stroke-width',4+'px');
+                            d3.selectAll(RestofAmmGraphs).style('opacity',0.4);
+
+                            d3.select('#Per'+ID).style('stroke-width',4+'px');
+                            d3.selectAll(RestofPerGraphs).style('opacity',0.4);
+
+                            d3.select('#Sol'+ID).style('stroke-width',4+'px');
+                            d3.selectAll(RestofSolGraphs).style('opacity',0.4);
+
+                            d3.select('#TOC'+ID).style('stroke-width',4+'px');
+                            d3.selectAll(RestofTOCGraphs).style('opacity',0.4);
+
+                            d3.select('#BoxpH').text(value.pH);
+                            d3.select('#BoxSol').text(value.sol);
+                            d3.select('#BoxAmm').text(value.amm);
+                            d3.select('#BoxPer').text(value.per);
+                            d3.select('#BoxTOC').text(value.toc);
+                        });
+
+                    var RightTab = Parent.append('div')
+                            .attr('class','col-sm-6');
+                    var Table = RightTab
+                            .append('table')
+                            .attr('class','table table-sm table-inverse')
+                            .style('padding-left','10px')
+                            .style('border-radius','5px');
+
+                    var LegendContainers = RightTab.append('div').attr('class','container')
+                            .append('div').attr('class','row')
+                            .style('padding-bottom','20px');
+
+                    LegendContainers.append('div').attr('class','col-sm-3')
+                            .style('width','35px')
+                            .style('height','35px')
+                            .style('border-radius','25px')
+                            .style('text-align','center')
+                            .style('line-height','35px')
+                            .style('font-family','Typo Grotesk Black')
+                            .style('font-size','10px')
+                            .style('background-color','steelblue')
+                            .style('color','#363F43')
+                            .text('ID');
+
+                    LegendContainers.append('div').attr('class','col-sm-3')
+                            .text('Station');
+
+                    LegendContainers.append('div').attr('class','col-sm-3')
+                            .text('Clean')
+                            .style('font-family','Typo Grotesk Black')
+                            .style('font-size','14px')
+                            .style('background-color','#ffffb2');
+
+                    LegendContainers.append('div').attr('class','col-sm-3')
+                            .text('Polluted')
+                            .style('text-align','right')
+                            .style('font-size','14px')
+                            .style('font-family','Typo Grotesk Black')
+                            .style('color','white')
+                            .style('background-color','#f03b20');
+
+                    var ListOptions = ['pH','Solubility','Ammonium','Permanganate','TOC'];
+
+                    Table.append('thead')
+                            .append('tr')
+                            .selectAll('.basinColumn')
+                            .data(ListOptions)
+                            .enter()
+                            .append('th')
+                            .attr('class','basinColumn')
+                            .text(function (d) {
+                                return d;
+                            });
+
+                    Table.append('tbody')
+                            .append('tr')
+                            .selectAll('.basinData')
+                            .data(ListOptions)
+                            .enter()
+                            .append('td')
+                            .attr('class','basinData')
+                            .text('-')
+                            .attr('id',function(d) {
+                                return 'Box'+d.substring(0,3);
+                            });
+
+                    var Checkbox = LeftTab.append('form')
+                            .attr('role','form')
+                            .style('margin-top','20px');
+
+                    var pHbox = Checkbox.append('div')
+                            .attr('class','checkbox checkbox-info')
+                            .style('display','inline-block');
+
+                    pHbox.append('input')
+                            .attr('type','radio')
+                            .attr('name','RTbox')
+                            .property('checked',true)
+                            .attr('id','BasinRealTimeCheckpH')
+                            .on('click',function () {
+                                CircleLayer.style('background-color',function (d) {
+                                    var Classify = ClassifyColor(d[3]);
+
+                                    if (Classify[0]>0) {
+                                        return color(Classify[0]);
+                                    } else return '#5f6f7';
+                                })
+                            });
+
+                    pHbox.append('label')
+                            .attr('for','BasinRealTimeCheckpH')
+                            .text('pH');
+
+                    var Solbox = Checkbox.append('div')
+                            .attr('class','checkbox checkbox-info')
+                            .style('display','inline-block');
+
+                    Solbox.append('input')
+                            .attr('type','radio')
+                            .attr('name','RTbox')
+                            .attr('id','BasinRealTimeCheckSol')
+                            .on('click',function () {
+                                CircleLayer.style('background-color',function (d) {
+                                    var Classify = ClassifyColor(d[3]);
+
+                                    if (Classify[1]>0 && Classify[1]<100) {
+                                        return color(Classify[1]);
+                                    } else return '#5f6f7';
+                                })
+                            });
+
+                    Solbox.append('label')
+                            .attr('for','BasinRealTimeCheckSol')
+                            .text('Solubility');
+
+                    var Ammbox = Checkbox.append('div')
+                            .attr('class','checkbox checkbox-info')
+                            .style('display','inline-block');
+
+                    Ammbox.append('input')
+                            .attr('type','radio')
+                            .attr('name','RTbox')
+                            .attr('id','BasinRealTimeCheckAmm')
+                            .on('click',function () {
+                                CircleLayer.style('background-color',function (d) {
+                                    var Classify = ClassifyColor(d[3]);
+
+                                    if (Classify[2]>0 && Classify[2]<100) {
+                                        return color(Classify[2]);
+                                    } else return '#5f6f7';
+                                })
+                            });
+
+                    Ammbox.append('label')
+                            .attr('for','BasinRealTimeCheckAmm')
+                            .text('Ammonium');
+
+                    var Perbox = Checkbox.append('div')
+                            .attr('class','checkbox checkbox-info')
+                            .style('display','inline-block');
+
+                    Perbox.append('input')
+                            .attr('type','radio')
+                            .attr('name','RTbox')
+                            .attr('id','BasinRealTimeCheckPer')
+                            .on('click',function () {
+                                CircleLayer.style('background-color',function (d) {
+                                    var Classify = ClassifyColor(d[3]);
+
+                                    if (Classify[3]>0) {
+                                        return color(Classify[3]);
+                                    } else return '#5f6f7';
+                                })
+                            });
+
+                    Perbox.append('label')
+                            .attr('for','BasinRealTimeCheckPer')
+                            .text('Permanganate');
+
+                    var TOCbox = Checkbox.append('div')
+                            .attr('class','checkbox checkbox-info')
+                            .style('display','inline-block');
+
+                    TOCbox.append('input')
+                            .attr('type','radio')
+                            .attr('name','RTbox')
+                            .attr('id','BasinRealTimeCheckTOC')
+                            .on('click',function () {
+                                CircleLayer.style('background-color',function (d) {
+                                    var Classify = ClassifyColor(d[3]);
+
+                                    if (Classify[4]>0) {
+                                        return color(Classify[4]);
+                                    } else return '#5f6f7';
+                                })
+                            });
+
+                    TOCbox.append('label')
+                            .attr('for','BasinRealTimeCheckTOC')
+                            .text('TOC');
+                }
+
+                function GenerateMapPointsSVG(TypePol) {
+
+                    //GENERATE CODE ONLY
+                    //####################################################
+                    d3.select('#d3overlay').remove();
+
+                    var svg = d3.select(MyMap.getPanes().overlayPane).append('svg')
+                            .attr('id','d3overlay');
+                    var g = d3.select('#d3overlay').append('g').attr('class','leaflet-zoom-hide');
+
+                    var div = svg.append('rect')
+                            .attr('width','70px')
+                            .attr('height','20px')
+                            .attr('fill','orange')
+                            .attr('class','tooltip')
+                            .style('opacity',0);
+
+                    div.append('text')
+                            .text('');
+
+                    d3.json('MapDataRT.geo.json',function (collection) {
+
+                        var transform = d3.geo.transform({
+                            point: projectPoint
+                        });
+                        var d3path = d3.geo.path().projection(transform);
+
+                        var color = d3.scale.linear()
+                                .range(["#ffffb2", "#f03b20"])
+                                .domain([0, 1]);
+
+                        var RoseColor = d3.scale.ordinal()
+                                .range(['#FF9F5C','#DB564C','#AA3990','#722C82','#504BD9']);
+
+                        if (TypePol[0] == 'All') {
+
+                            //Rose Marker Working version
+                            var widthData = 40;
+                            var heightData = 40;
+                            var radius = 1;
+                            var arc;
+                            var marker = d3.select("#d3overlay").select("g")
+                                    .selectAll('.points')
+                                    .data(collection.features)
+                                    .enter()
+                                    .append("g", '.points')
+                                    .on('mouseover',function(d,i) {
+                                        d3.select(this).select('text').transition().duration(200).attr('opacity',0.8);
+                                    })
+                                    .on('mouseout',function () {
+                                        d3.select(this).select('text').transition().duration(200).attr('opacity',0);
+                                    })
+                                    .attr('class', 'RoseChart')
+                                    .attr('id', function (d, i) {
+                                        return 'a' + i;
+                                    })
+                                    .attr('width', widthData)
+                                    .attr('height', heightData)
+                                    .attr("transform", "translate(" + widthData / 2 + "," + heightData / 2 + ")")
+                                    .on('click', function () {
+
+                                        var ID = d3.select(this).attr('id').substr(1);
+                                        LabelHeader(ID);
+                                    });
+
+
+                            marker.append('text')
+                                    .attr('fill','white')
+                                    .attr('opacity',0)
+                                    .attr('transform','translate(20,20)')
+                                    .text(function (d,i) {
+                                        return DataListFin[i][0];
+                                    });
+
+                            for (var j = 0; j < DataListFin.length; j++) {
+
+
+                                var PolDataValues = [];
+                                if (DataListFin[j][2] == '9999' || DataListFin[j][2] == '-') {
+                                    PolDataValues.push(0);
+                                }
+                                else if (DataListFin[j][2] > 8) {
+                                    PolDataValues.push(DataListFin[j][2] / 9);
+                                } else if (DataListFin < 7) {
+                                    PolDataValues.push(4 / DataListFin[j][2]);
+                                } else {
+                                    PolDataValues.push(DataListFin[j][2] / 14);
+                                }
+                                //Solubility
+                                if (DataListFin[j][4] == '9999' || DataListFin[j][4] == '-') {
+                                    PolDataValues.push(0);
+                                } else {
+                                    PolDataValues.push(4 / DataListFin[j][4]);
+                                }
+                                //Ammonium
+                                if (DataListFin[j][6] == '9999' || DataListFin[j][6] == '-') {
+                                    PolDataValues.push(0);
+                                } else {
+                                    PolDataValues.push(DataListFin[j][6] / 7);
+                                }
+                                //Permanganate
+                                if (DataListFin[j][8] == '9999' || DataListFin[j][8] == '-') {
+                                    PolDataValues.push(0);
+                                } else {
+                                    PolDataValues.push(DataListFin[j][8] / 8);
+                                }
+                                //TOC
+                                if (DataListFin[j][10] == '9999' || DataListFin[j][10] == '-') {
+                                    PolDataValues.push(0);
+                                } else {
+                                    PolDataValues.push(DataListFin[j][10] / 1);
+                                    }
+
+                                var startAngle = 0;
+                                //Create respective arcs
+                                for (var i = 0; i < 5; i++) {
+                                    arc = d3.svg.arc()
+                                            .innerRadius(radius)
+                                            .outerRadius(function() {
+                                                if (PolDataValues[i]>1) {
+                                                    return (radius + (20));
+                                                } else {
+                                                    return (radius + (PolDataValues[i] * 2000) / 100);
+                                                }
+
+                                            })
+                                            .startAngle(startAngle)
+                                            .endAngle((2 * Math.PI) * (i + 1) / 5);
+                                    startAngle = (2 * Math.PI) * (i + 1) / 5;
+                                    var currentGElement = d3.select('#a' + j);
+                                    currentGElement.append("path")
+                                            .attr("class", "arc")
+                                            .attr("d", arc)
+                                            .style("fill", function (d) {
+                                                return RoseColor(i);
+                                            })
+                                }
+                            }
+                        } else {
+
+                             marker = d3.select('#d3overlay')
+                                    .select("g")
+                                    .selectAll('.points')
+                                    .data(collection.features)
+                                    .enter()
+                                    .append("g", '.points')
+                                     .on('mouseover',function(d,i) {
+                                         d3.select(this).select('text').transition().duration(200).attr('opacity',0.8);
+                                     })
+                                     .on('mouseout',function () {
+                                         d3.select(this).select('text').transition().duration(200).attr('opacity',0);
+                                     })
+                                    .attr('class', 'CircleChart')
+                                    .attr('id', function (d, i) {
+                                        return 'a' + i;
+                                    })
+                                    .on('click', function () {
+                                        clearInterval(GlobalInterval);
+                                        if(NewIDHighlight != '')
+                                            d3.select('#'+NewIDHighlight).select('circle').style('fill',OldStyleColor);
+                                        OldStyleColor = d3.select(this).select('circle').style('fill');
+                                        GlobalInterval = setInterval(changeColor,500);
+                                        NewIDHighlight = d3.select(this).attr('id');
+
+
+                                        function changeColor() {
+                                            var colorVar = d3.select('#'+NewIDHighlight).select('circle');
+                                            if (colorVar.style('opacity') == 0.99)
+                                                colorVar.transition().duration(100).style('fill',OldStyleColor).style('opacity',1);
+                                            else
+                                                colorVar.transition().duration(100).style('fill','#39FF14').style('opacity',0.99);
+                                        }
+                                         var ID = d3.select(this).attr('id').substr(1);
+                                         LabelHeader(ID);
+                                    });
+
+                            marker.append('text')
+                                    .attr('fill','white')
+                                    .attr('opacity',0)
+                                    .attr('transform','translate(20,20)')
+                                    .text(function (d,i) {
+                                        return DataListFin[i][0];
+                                    });
+
+
+                             for (var l=0;l<DataListFin.length;l++) {
+
+                                 currentGElement = d3.select('#a'+l);
+                                 currentGElement.append('circle')
+                                         .attr('r',5)
+                                         .attr('fill',function () {
+                                             if(TypePol[0]=='pH') {
+                                                if (DataListFin[l][TypePol[1]]=='9999' || DataListFin[l][TypePol[1]]=='-')
+                                                    return 'black';
+                                                else
+                                                        if (DataListFin[l][TypePol[1]] > 9)
+                                                                return color(1);
+                                                        else if(DataListFin[l][TypePol[1]] < 6 && TypePol[1])
+                                                                return color(1);
+                                                        else
+                                                                return color(0.01);
+
+                                             } else if (TypePol[0]=='Solubility') {
+                                                 if (DataListFin[l][TypePol[1]]=='9999' || DataListFin[l][TypePol[1]]=='-')
+                                                         return 'black';
+                                                 else {
+                                                     if (TypePol[2]/DataListFin[l][TypePol[1]]>1) {
+                                                         return color(1);
+                                                     } else {
+                                                         return color(TypePol[2]/DataListFin[l][TypePol[1]]);
+                                                     }
+                                                 }
+
+
+                                             } else {
+                                                 if (DataListFin[l][TypePol[1]]=='9999' || DataListFin[l][TypePol[1]]=='-')
+                                                         return 'black';
+                                                 else {
+                                                     if (DataListFin[l][TypePol[1]]/TypePol[2]>1) {
+                                                         return color(1);
+                                                     } else {
+                                                         return color(DataListFin[l][TypePol[1]]/TypePol[2])
+                                                     }
+                                                 }
+                                             }
+                                         });
+
+                                 currentGElement.append('line')
+
+                             }
+                        }
+
+                        MyMap.on('viewreset',reset);
+                        reset();
+
+                        function reset() {
+                            var bounds = d3path.bounds(collection),
+                                    topLeft = bounds[0],
+                                    bottomRight = bounds[1];
+
+                            marker.attr('transform',function (d) {
+                                return "translate("+
+                                        applyLatLngToLayer(d).x+","+
+                                        applyLatLngToLayer(d).y+")";
+
+                            });
+
+                            svg.attr('width',bottomRight[0]-topLeft[0]+120)
+                                    .attr('height',bottomRight[1] - topLeft[1]+ 120)
+                                    .style('left',topLeft[0] - 50+'px')
+                                    .style('top',topLeft[1] - 50+'px');
+
+                            g.attr("transform", "translate(" + (-topLeft[0] + 50) + "," + (-topLeft[1] + 50) + ")");
+                        }
+
+                        });
+
+                        //Generate points related to D3 overlay
+                        function projectPoint(x,y) {
+                            var point = MyMap.latLngToLayerPoint(new L.LatLng(y,x));
+                            this.stream.point(point.x,point.y);
+
+                        }
+
+                        //Generate points related to D3 overlay
+                        function applyLatLngToLayer(d) {
+                            var y = d.geometry.coordinates[1];
+                            var x = d.geometry.coordinates[0];
+                            return MyMap.latLngToLayerPoint(new L.LatLng(y,x));
+                        }
+                    }
+
+                //NORMAL CODE BEGIN
+                //#############################################
+
+                //Initialize Data Table for Sorting and other functionality
+                $('#TableDataHead').DataTable({
+                    "aLengthMenu": [
+                        [25, 50, 100, -1],
+                        [25, 50, 100,"All"]
+                    ]
+                });
+
+                //Initialize CSV download button
+                $(document).ready(function () {
+                    $('<a />',{
+                        download: 'WaterPollutionData'+"-"+moment().format('DD-MM-YY')+'.csv',
+                        type: 'button',
+                        id: 'DownloadCSVButton',
+                        onClick: 'return ExcellentExport.csv(this,"TableDataHead");',
+                        class: 'btn btn-primary-outline',
+                        text: 'Download as CSV'
+                    }).css('font-size','17px').appendTo('#ButtonContainerCSV');
+                });
+
+
+
+            });
+
+
+        });
+
+    </script>
+</body>
+</html>
