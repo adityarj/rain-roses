@@ -7,6 +7,7 @@ var ramp = d3.scale.quantize()
     .range(["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]);
 var Months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
+$(function () {
 var data = d3.csv('csv_files/rainfall_data_2015_monthly.csv', function (data) {
 
         var main = d3.select('#Heatmap').append('div');
@@ -223,3 +224,4 @@ var data = d3.csv('csv_files/rainfall_data_2015_monthly.csv', function (data) {
         }
         
     }
+});

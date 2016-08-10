@@ -1863,6 +1863,9 @@ function DrawGraphTOC(TargetList) {
 
 //Don't panic! It's just a time parser
 var parseDate = d3.time.format('%d-%m-%Y %H:%M').parse;
+
+$(function () {
+
 var mainData = d3.csv('csv_files/PolData.csv', function (data) {
     ID = 5;
     data.forEach(function (d) {
@@ -2222,5 +2225,6 @@ var mainData = d3.csv('csv_files/PolData.csv', function (data) {
     });
 
     //Create checkboxes related to each graph
+});
 });
 //Below is to convert object to a readable format for D3 to make a graph

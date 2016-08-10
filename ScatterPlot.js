@@ -14,7 +14,7 @@ $(function () {
     var ClickBait = false;
     var GlobalID = '';
     var colorBasin = ['#bbd8fa','#e1c3ff','#fad6fa','#ffead7','#ffeacb','#fce0c8','#a7e4ff','#ffbfda',
-        '#def5fb','#ccc7ff','#fbc0d6','#faf7d8','#faf7d8','#bbd8fa','#bbd8fa','#bbd8fa','#bbd8fa','#e1c3ff','#fad6fa','#ffead7','#ffeacb','#fce0c8'];2
+        '#def5fb','#ccc7ff','#fbc0d6','#faf7d8','#faf7d8','#bbd8fa','#bbd8fa','#bbd8fa','#bbd8fa','#e1c3ff','#fad6fa','#ffead7','#ffeacb','#fce0c8'];
 
     var colorscale = ['#ea9490','#f79a8d','#fec49b','#fed7a3','#feecb8','#ffffd7'];
 
@@ -63,15 +63,14 @@ $(function () {
             .attr('id','speed1')
             .attr('autocomplete','off')
             .on('click',function () {
-                console.log('hello');
                 d3.select('#s3').attr('class','btn btn-primary');
                 d3.select('#s2').attr('class','btn btn-primary');
                 d3.select('#s1').attr('class','btn btn-primary active');
 
                 if (d3.select('#PlayButton').text()=='Pause') {
                     clearInterval(timer);
-                    timer = setInterval(AnalysisThing,2400);
-                    speed = 2400;
+                    timer = setInterval(AnalysisThing,800);
+                    speed = 800;
                 }
             });
 
@@ -96,8 +95,8 @@ $(function () {
 
                 if (d3.select('#PlayButton').text()=='Pause') {
                     clearInterval(timer);
-                    timer = setInterval(AnalysisThing, 1600);
-                    speed = 1600;
+                    timer = setInterval(AnalysisThing, 400);
+                    speed = 400;
                 }
             });
 
@@ -118,8 +117,8 @@ $(function () {
 
                 if (d3.select('#PlayButton').text()=='Pause') {
                     clearInterval(timer);
-                    timer = setInterval(AnalysisThing, 800);
-                    speed = 800;
+                    timer = setInterval(AnalysisThing, 200);
+                    speed = 200;
                 }
             });
 
@@ -422,6 +421,14 @@ $(function () {
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+        var ClipPath = svg.append('clipPath')
+            .attr('id','DotClip')
+            .append('rect')
+            .attr('width',800)
+            .attr('height',550)
+            .attr('x',0)
+            .attr('y',0);
+
         var rect6 = svg.append('rect')
             .attr('x',0)
             .attr('y',0)
@@ -478,7 +485,7 @@ $(function () {
             .attr('id','LabelSlider')
             .style('font-size','20px')
             .attr('class','label label-success')
-            .text("1st Dec, 16");
+            .text("1st Dec 15");
 
         var InteractiveButtons = d3.select('#MainScatter')
             .append('div')
@@ -520,44 +527,45 @@ $(function () {
             .data(data)
             .enter()
             .append('circle')
+            .attr('clip-path','url(#DotClip')
             .attr('class','dot')
             .attr('r',5)
             .attr('id',function (d) {
                 if (Previous) {
-                    if (d.basing == Previous[2]) {
-
-                        var line = svg.append('line')
-                            .attr('x1',function () {
-                                if (+Previous[0]) {
-                                    return x(Previous[0])
-                                } else {
-                                    return x(7);
-                                }
-                            })
-                            .attr('x2',function () {
-                                if (+d['pH1']) {
-                                    return x(+d['pH1'])
-                                }
-                            })
-                            .attr('y1',function () {
-                                if (+Previous[1]) {
-                                    return y(+Previous[1])
-                                }
-                            })
-                            .attr('y2',function () {
-                                if (+d['rain1']) {
-                                    return y(+d['rain1'])
-                                }
-                            })
-                            .style('stroke-width','2px')
-                            .style('stroke',function () {
-                                return colorBasin[itr];
-                            });
-
-                        LineBasin.push(line);
-                    } else {
-                        itr++;
-                    }
+                    // if (d.basing == Previous[2]) {
+                    //
+                    //     var line = svg.append('line')
+                    //         .attr('x1',function () {
+                    //             if (+Previous[0]) {
+                    //                 return x(Previous[0])
+                    //             } else {
+                    //                 return x(7);
+                    //             }
+                    //         })
+                    //         .attr('x2',function () {
+                    //             if (+d['pH1']) {
+                    //                 return x(+d['pH1'])
+                    //             }
+                    //         })
+                    //         .attr('y1',function () {
+                    //             if (+Previous[1]) {
+                    //                 return y(+Previous[1])
+                    //             }
+                    //         })
+                    //         .attr('y2',function () {
+                    //             if (+d['rain1']) {
+                    //                 return y(+d['rain1'])
+                    //             }
+                    //         })
+                    //         .style('stroke-width','2px')
+                    //         .style('stroke',function () {
+                    //             return colorBasin[itr];
+                    //         });
+                    //
+                    //     LineBasin.push(line);
+                    // } else {
+                    //     itr++;
+                    // }
 
 
                 }
@@ -570,7 +578,6 @@ $(function () {
                 }
             })
             .attr('cy',function (d) {
-                console.log(+d['rain1']);
                 if (+d['rain1']>=0) {
                     //console.log('work');
                     return y(+d['rain1']);
@@ -629,7 +636,6 @@ $(function () {
                     ClickBait = true;
                     d3.select('#RegressionValue').text(d['points'+counter]);
                     d3.select('#LabelID').text(d.id);
-                    console.log(d.Y);
                     if (+d['yvalue1'] == 1) {
                         d3.select('#Determine').text('Polluted').attr('class','label label-danger')
                     } else if(+d['yvalue1'] == 0) {
@@ -651,7 +657,6 @@ $(function () {
 
         var counter = 1;
         var BasinCount = 0;
-        console.log(LineBasin);
 
         $('#slider').on('change',function () {
             counter = $('#slider').val();
@@ -667,91 +672,90 @@ $(function () {
                 svg.selectAll('.dot')
                     .data(data)
                     .transition()
-                    .duration(600)
+                    .duration(speed)
                     .attr('cx',function (d) {
                         if (Previous) {
-                            if (d.basing == Previous[2]) {
 
-                                 LineBasin[BasinCount]
-                                    .transition()
-                                    .duration(600)
-                                    .attr('x1',function () {
-                                        if (+Previous[0]>=0) {
-                                            return x(Previous[0])
-                                        } else {
-                                            Checker = false;
-                                        }
-                                    })
-                                    .attr('x2',function () {
-                                        switch (controller) {
-                                            case 0:
-                                                if (+d['pH'+counter]>=0) {
-                                                    return +d['pH'+counter];
-                                                } else {
-                                                    Checker = false;
-                                                }
-                                                break;
-                                            case 1:
-                                                if (+d['sol'+counter]>=0) {
-                                                    return +d['sol'+counter];
-                                                } else {
-                                                    Checker = false;
-                                                }
-                                                break;
-                                            case 2:
-                                                if(+d['ammon'+counter]>=0) {
-                                                    return +d['ammon'+counter];
-                                                } else {
-                                                    Checker = false;
-                                                }
-                                                break;
-                                            case 3:
-                                                if(+d['permanganate'+counter]>=0) {
-                                                    return +d['permanganate'+counter];
-                                                } else {
-                                                    Checker = false;
-                                                }
-                                                break;
-                                            case 4:
-                                                if(+d['toc'+counter]>=0) {
-                                                    return +d['toc'+counter];
-                                                } else {
-                                                    Checker = false;
-                                                }
-                                                break;
-                                        }
-                                    })
-                                    .attr('y1',function () {
-                                        if (+Previous[1]>=0) {
-                                            d3.select(this).style('opacity',0.7);
-                                            return y(+Previous[1])
-                                        } else {
-                                            Checker = false;
-                                        }
-                                    })
-                                    .attr('y2',function () {
-                                        if (+d['rain'+counter]>=0) {
-                                            d3.select(this).style('opacity',0.7);
-                                            return y(+d['rain'+counter])
-                                        } else {
-                                            Checker = false;
-                                        }
-                                    })
-                                    .style('stroke-width','2px');
-
-                                if (Checker == false) {
-                                    LineBasin[BasinCount].style('opacity',1);
-                                } else {
-                                    LineBasin[BasinCount].style('opacity',0);
-                                }
-
-                                BasinCount++;
-                            }
-
-
+                            // if (d.basing == Previous[2]) {
+                            //
+                            //      LineBasin[BasinCount]
+                            //         .transition()
+                            //         .duration(600)
+                            //         .attr('x1',function () {
+                            //             if (+Previous[0]>=0) {
+                            //                 return x(Previous[0])
+                            //             } else {
+                            //                 Checker = false;
+                            //             }
+                            //         })
+                            //         .attr('x2',function () {
+                            //             switch (controller) {
+                            //                 case 0:
+                            //                     if (+d['pH'+counter]>=0) {
+                            //                         return +d['pH'+counter];
+                            //                     } else {
+                            //                         Checker = false;
+                            //                     }
+                            //                     break;
+                            //                 case 1:
+                            //                     if (+d['sol'+counter]>=0) {
+                            //                         return +d['sol'+counter];
+                            //                     } else {
+                            //                         Checker = false;
+                            //                     }
+                            //                     break;
+                            //                 case 2:
+                            //                     if(+d['ammon'+counter]>=0) {
+                            //                         return +d['ammon'+counter];
+                            //                     } else {
+                            //                         Checker = false;
+                            //                     }
+                            //                     break;
+                            //                 case 3:
+                            //                     if(+d['permanganate'+counter]>=0) {
+                            //                         return +d['permanganate'+counter];
+                            //                     } else {
+                            //                         Checker = false;
+                            //                     }
+                            //                     break;
+                            //                 case 4:
+                            //                     if(+d['toc'+counter]>=0) {
+                            //                         return +d['toc'+counter];
+                            //                     } else {
+                            //                         Checker = false;
+                            //                     }
+                            //                     break;
+                            //             }
+                            //         })
+                            //         .attr('y1',function () {
+                            //             if (+Previous[1]>=0) {
+                            //                 d3.select(this).style('opacity',0.7);
+                            //                 return y(+Previous[1])
+                            //             } else {
+                            //                 Checker = false;
+                            //             }
+                            //         })
+                            //         .attr('y2',function () {
+                            //             if (+d['rain'+counter]>=0) {
+                            //                 d3.select(this).style('opacity',0.7);
+                            //                 return y(+d['rain'+counter])
+                            //             } else {
+                            //                 Checker = false;
+                            //             }
+                            //         })
+                            //         .style('stroke-width','2px');
+                            //
+                            //     if (Checker == false) {
+                            //         LineBasin[BasinCount].style('opacity',1);
+                            //     } else {
+                            //         LineBasin[BasinCount].style('opacity',0);
+                            //     }
+                            //
+                            //     BasinCount++;
+                            // }
                         }
                         Previous = [d['pH'+counter],d['rain'+counter],d.basing];
-                        SpecTime = d['time'+counter];
+                        SpecTime = d['date'+counter];
                         if(controller==0) {
                             if(+d['pH'+counter]) {
                                 Previous[0] = d['pH'+counter];
@@ -821,85 +825,85 @@ $(function () {
                     //     }
                     // })
                     .transition()
-                    .duration(600)
+                    .duration(speed)
                     .attr('cx',function (d) {
                         if (Previous) {
-                            if (d.basing == Previous[2]) {
-
-                                LineBasin[BasinCount]
-                                    .transition()
-                                    .duration(600)
-                                    .attr('x1',function () {
-                                        if (+Previous[0]) {
-                                            return x(Previous[0])
-                                        } else {
-                                            Checker = false;
-                                        }
-                                    })
-                                    .attr('x2',function () {
-                                        switch (controller) {
-                                            case 0:
-                                                if (+d['pH'+counter]) {
-                                                    return +d['pH'+counter];
-                                                } else {
-                                                    Checker = false;
-                                                }
-                                                break;
-                                            case 1:
-                                                if (+d['sol'+counter]) {
-                                                    return +d['sol'+counter];
-                                                } else {
-                                                    Checker = false;
-                                                }
-                                                break;
-                                            case 2:
-                                                if(+d['ammon'+counter]) {
-                                                    return +d['ammon'+counter];
-                                                } else {
-                                                    Checker = false;
-                                                }
-                                                break;
-                                            case 3:
-                                                if(+d['permanganate'+counter]) {
-                                                    return +d['permanganate'+counter];
-                                                } else {
-                                                    Checker = false;
-                                                }
-                                                break;
-                                            case 4:
-                                                if(+d['toc'+counter]) {
-                                                    return +d['toc'+counter];
-                                                } else {
-                                                    Checker = false;
-                                                }
-                                                break;
-                                        }
-                                    })
-                                    .attr('y1',function () {
-                                        if (+Previous[1]>=0) {
-                                            return y(+Previous[1])
-                                        } else {
-                                            Checker = false;
-                                        }
-                                    })
-                                    .attr('y2',function () {
-                                        if (+d['rain'+counter]>=0) {
-                                            return y(+d['rain'+counter]);
-                                        } else {
-                                            Checker = false;
-                                        }
-                                    })
-                                    .style('stroke-width','2px');
-
-                                // if (Checker == false) {
-                                //     LineBasin[BasinCount].style('opacity',1);
-                                // } else {
-                                //     LineBasin[BasinCount].style('opacity',0)
-                                // }
-
-                                BasinCount++;
-
-                            }
+                            // if (d.basing == Previous[2]) {
+                            //
+                            //     LineBasin[BasinCount]
+                            //         .transition()
+                            //         .duration(600)
+                            //         .attr('x1',function () {
+                            //             if (+Previous[0]) {
+                            //                 return x(Previous[0])
+                            //             } else {
+                            //                 Checker = false;
+                            //             }
+                            //         })
+                            //         .attr('x2',function () {
+                            //             switch (controller) {
+                            //                 case 0:
+                            //                     if (+d['pH'+counter]) {
+                            //                         return +d['pH'+counter];
+                            //                     } else {
+                            //                         Checker = false;
+                            //                     }
+                            //                     break;
+                            //                 case 1:
+                            //                     if (+d['sol'+counter]) {
+                            //                         return +d['sol'+counter];
+                            //                     } else {
+                            //                         Checker = false;
+                            //                     }
+                            //                     break;
+                            //                 case 2:
+                            //                     if(+d['ammon'+counter]) {
+                            //                         return +d['ammon'+counter];
+                            //                     } else {
+                            //                         Checker = false;
+                            //                     }
+                            //                     break;
+                            //                 case 3:
+                            //                     if(+d['permanganate'+counter]) {
+                            //                         return +d['permanganate'+counter];
+                            //                     } else {
+                            //                         Checker = false;
+                            //                     }
+                            //                     break;
+                            //                 case 4:
+                            //                     if(+d['toc'+counter]) {
+                            //                         return +d['toc'+counter];
+                            //                     } else {
+                            //                         Checker = false;
+                            //                     }
+                            //                     break;
+                            //             }
+                            //         })
+                            //         .attr('y1',function () {
+                            //             if (+Previous[1]>=0) {
+                            //                 return y(+Previous[1])
+                            //             } else {
+                            //                 Checker = false;
+                            //             }
+                            //         })
+                            //         .attr('y2',function () {
+                            //             if (+d['rain'+counter]>=0) {
+                            //                 return y(+d['rain'+counter]);
+                            //             } else {
+                            //                 Checker = false;
+                            //             }
+                            //         })
+                            //         .style('stroke-width','2px');
+                            //
+                            //     // if (Checker == false) {
+                            //     //     LineBasin[BasinCount].style('opacity',1);
+                            //     // } else {
+                            //     //     LineBasin[BasinCount].style('opacity',0)
+                            //     // }
+                            //
+                            //     BasinCount++;
+                            //
+                            // }
 
 
                         }
@@ -953,7 +957,6 @@ $(function () {
                 counter++;
             }
         }
-
 
         InteractiveButtons.append('button')
             .attr('type','button')

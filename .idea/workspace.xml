@@ -24,8 +24,8 @@
       <file leaf-file-name="frame_new.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frame_new.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="1712" column="62" selection-start-line="1712" selection-start-column="62" selection-end-line="1712" selection-end-column="62" />
+            <state relative-caret-position="622">
+              <caret line="785" column="0" selection-start-line="785" selection-start-column="0" selection-end-line="785" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -34,7 +34,7 @@
       <file leaf-file-name="ProcessElevationData.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/csv_files/ProcessElevationData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="837">
+            <state relative-caret-position="1474">
               <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
               <folding />
             </state>
@@ -44,18 +44,18 @@
       <file leaf-file-name="forcelayoutexpt.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forcelayoutexpt.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3256">
-              <caret line="148" column="33" selection-start-line="93" selection-start-column="0" selection-end-line="148" selection-end-column="33" />
+            <state relative-caret-position="124">
+              <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PollutionGraph.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PollutionGraph.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PollutionGraph.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="1774" column="34" selection-start-line="1774" selection-start-column="34" selection-end-line="1774" selection-end-column="34" />
+            <state relative-caret-position="727">
+              <caret line="2228" column="3" selection-start-line="2228" selection-start-column="3" selection-end-line="2228" selection-end-column="3" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -63,11 +63,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="RainfallHeatmap.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RainfallHeatmap.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4972">
+              <caret line="226" column="3" selection-start-line="226" selection-start-column="3" selection-end-line="226" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ScatterPlot.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ScatterPlot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22682">
-              <caret line="1031" column="57" selection-start-line="1031" selection-start-column="52" selection-end-line="1031" selection-end-column="57" />
+            <state relative-caret-position="10626">
+              <caret line="483" column="28" selection-start-line="483" selection-start-column="28" selection-end-line="483" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -76,7 +86,7 @@
       <file leaf-file-name="frame_data_new.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frame_data_new.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="919">
+            <state relative-caret-position="14190">
               <caret line="636" column="23" selection-start-line="636" selection-start-column="23" selection-end-line="636" selection-end-column="23" />
               <caret line="645" column="6" selection-start-line="645" selection-start-column="6" selection-end-line="645" selection-end-column="6" />
               <folding />
@@ -131,12 +141,12 @@
         <option value="$PROJECT_DIR$/csv_files/R-W-Data.js" />
         <option value="$PROJECT_DIR$/csv_files/RWC.csv" />
         <option value="$PROJECT_DIR$/ScatterPlot.html" />
-        <option value="$PROJECT_DIR$/RainfallHeatmap.js" />
         <option value="$PROJECT_DIR$/forcelayoutexpt.html" />
-        <option value="$PROJECT_DIR$/ScatterPlot.js" />
         <option value="$PROJECT_DIR$/frame_data_new.js" />
+        <option value="$PROJECT_DIR$/ScatterPlot.js" />
         <option value="$PROJECT_DIR$/frame_new.html" />
         <option value="$PROJECT_DIR$/PollutionGraph.js" />
+        <option value="$PROJECT_DIR$/RainfallHeatmap.js" />
       </list>
     </option>
   </component>
@@ -152,7 +162,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
-    <option name="width" value="1924" />
+    <option name="width" value="1938" />
     <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -180,10 +190,27 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebApp_related_tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebApp_related_tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebApp_related_tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
     </panes>
   </component>
@@ -393,18 +420,19 @@
       <workItem from="1470648207041" duration="6014000" />
       <workItem from="1470669818342" duration="3327000" />
       <workItem from="1470706247282" duration="4965000" />
-      <workItem from="1470797694653" duration="8540000" />
+      <workItem from="1470797694653" duration="9135000" />
+      <workItem from="1470814498994" duration="4829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="832861000" />
+    <option name="totallyTimeSpent" value="838285000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1924" height="1048" extended-state="1" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32686254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.65" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -431,7 +459,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32275712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32686254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.65" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -453,7 +481,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="21" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -584,13 +612,6 @@
     <entry file="file://$PROJECT_DIR$/main.js" />
     <entry file="file://$PROJECT_DIR$/frame_data.js" />
     <entry file="file://$PROJECT_DIR$/dynamic_fetch.js" />
-    <entry file="file://$PROJECT_DIR$/RainfallHeatmap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://I:/ALP 2016/App_testing/WebApp_related_tests/frame_data_new.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -606,25 +627,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forcelayoutexpt.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3256">
-          <caret line="148" column="33" selection-start-line="93" selection-start-column="0" selection-end-line="148" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ScatterPlot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22682">
-          <caret line="1031" column="57" selection-start-line="1031" selection-start-column="52" selection-end-line="1031" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frame_data_new.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="919">
+        <state relative-caret-position="14190">
           <caret line="636" column="23" selection-start-line="636" selection-start-column="23" selection-end-line="636" selection-end-column="23" />
           <caret line="645" column="6" selection-start-line="645" selection-start-column="6" selection-end-line="645" selection-end-column="6" />
           <folding />
@@ -633,27 +638,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/csv_files/ProcessElevationData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
+        <state relative-caret-position="1474">
           <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forcelayoutexpt.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frame_new.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="1712" column="62" selection-start-line="1712" selection-start-column="62" selection-end-line="1712" selection-end-column="62" />
+        <state relative-caret-position="622">
+          <caret line="785" column="0" selection-start-line="785" selection-start-column="0" selection-end-line="785" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScatterPlot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10626">
+          <caret line="483" column="28" selection-start-line="483" selection-start-column="28" selection-end-line="483" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PollutionGraph.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="1774" column="34" selection-start-line="1774" selection-start-column="34" selection-end-line="1774" selection-end-column="34" />
+        <state relative-caret-position="727">
+          <caret line="2228" column="3" selection-start-line="2228" selection-start-column="3" selection-end-line="2228" selection-end-column="3" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RainfallHeatmap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4972">
+          <caret line="226" column="3" selection-start-line="226" selection-start-column="3" selection-end-line="226" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>

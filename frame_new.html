@@ -782,7 +782,10 @@
                             idPrevious = Id;
 
                             //Call function that will draw an svg magnet pair below the map
-                            GenerateMagnetPairs(BasinArray[Id],Id);
+                            d3.select('#MagnetPairs').remove();
+
+                            if (BasinArray[Id].info.length > 6)
+                                GenerateMagnetPairs(BasinArray[Id],Id);
                         },
                         id: 'Ba'+Incre
                     }).css('height','30px')
@@ -905,7 +908,7 @@
                     Basin.info.forEach(function(bas) {
                        BasinArraySet.push(bas[3]);
                     });
-                    d3.select('#MagnetPairs').remove();
+
 
                     var width = 840, height = 500, magnetRadius = 20;
 
@@ -947,10 +950,13 @@
                                         var scale = '';
                                         var val = key.name;
                                         var dustVal = d[val];
-                                        if (+dustVal == 9999) {
+
+                                        if (+dustVal == 9999 || dustVal == '-') {
                                             dustVal = 0;
                                         }
                                         var DiffX = key.x - x;
+                                        if (key.name == 'pH' && dustVal < 7)
+                                            dustVal = dustVal + (7 - dustVal*2);
                                         if (key.name == 'sol')
                                              scale = d3.scale.linear().domain([key.min,key.max]).range([0.9,0.1]);
                                         else
@@ -960,7 +966,7 @@
                                     });
 
                                     d3.select('#BT'+i).attr('dx',x);
-                                    
+
                                     return x;
                                 })
                                 .attr('cy',function (d,i) {
@@ -968,7 +974,7 @@
                                     keys.forEach(function (key) {
                                         var val = key.name;
                                         var dustVal = d[val];
-                                        if (+dustVal == 9999) {
+                                        if (+dustVal == 9999 || dustVal == '-') {
                                             dustVal = null;
                                         }
                                         var DiffX = key.y - y;
@@ -990,28 +996,36 @@
                     keys.forEach(function (d) {
                         if (d.name == 'sol') {
                             d.min = d3.max(BasinArraySet,function (de) {
-                                if (de[d.name]==9999) {
-                                    return null;
+                                if (de[d.name]=='9999' || de[d.name] == '-') {
+                                    return 0;
                                 } else
                                     return de[d.name];
                             });
                             d.max = d3.min(BasinArraySet,function (de) {
-                                if (de[d.name]==9999) {
-                                    return null;
+                                if (de[d.name]=='9999' || de[d.name] == '-') {
+                                    return 0;
+                                } else
+                                    return de[d.name];
+                            });
+                        } else if (d.name == 'pH') {
+                            d.min = 7;
+                            d.max = d3.max(BasinArraySet,function (de) {
+                                if (de[d.name]=='9999' || de[d.name] == '-') {
+                                    return 0;
                                 } else
                                     return de[d.name];
                             });
                         }
                         else {
                                 d.min = d3.min(BasinArraySet,function (de) {
-                                if (de[d.name]==9999) {
-                                    return null;
+                                if (de[d.name]=='9999' || de[d.name] == '-') {
+                                    return 0;
                                 } else
                                     return de[d.name];
                                 });
                             d.max = d3.max(BasinArraySet,function (de) {
-                                if (de[d.name]==9999) {
-                                    return null;
+                                if (de[d.name]=='9999' || de[d.name] == '-') {
+                                    return 0;
                                 } else
                                     return de[d.name];
                             });
@@ -1103,22 +1117,23 @@
 
                                 var ID = Basin.info[i][0];
 
+                                d3.select('#'+NewIDHighlight).select('circle').style('fill',OldStyleColor);
+
                                 info.forEach(function (data) {
                                     if (data[0] == ID) {
                                         LabelHeader(info.indexOf(data));
-                                        NewIDHighlight = info.indexOf(data);
+                                        NewIDHighlight = 'a'+info.indexOf(data);
                                     }
                                 });
 
-                                clearInterval(GlobalInterval,function () {
-                                    d3.select('#a'+NewIDHighlight).select('circle').style('fill',OldStyleColor)
-                                });
-                                OldStyleColor = d3.select('#a'+NewIDHighlight).select('circle').style('fill');
+                                clearInterval(GlobalInterval);
+
+                                OldStyleColor = d3.select('#'+NewIDHighlight).select('circle').style('fill');
                                 GlobalInterval = setInterval(changeColor,500);
 
 
                                 function changeColor() {
-                                    var colorVar = d3.select('#a'+NewIDHighlight).select('circle');
+                                    var colorVar = d3.select('#'+NewIDHighlight).select('circle');
                                     if (colorVar.style('opacity') == 0.99)
                                             colorVar.transition().duration(100).style('fill',OldStyleColor).style('opacity',1);
                                     else
@@ -1713,12 +1728,10 @@
                                     .on('click', function () {
                                         clearInterval(GlobalInterval);
                                         if(NewIDHighlight != '')
-                                            d3.select('#'+NewIDHighlight).select('circle').style('fill',OldStyleColor);
+                                            d3.select('#'+NewIDHighlight).select('circle').style('fill',OldStyleColor).style('opacity',1);
                                         OldStyleColor = d3.select(this).select('circle').style('fill');
                                         GlobalInterval = setInterval(changeColor,500);
                                         NewIDHighlight = d3.select(this).attr('id');
-
-
                                         function changeColor() {
                                             var colorVar = d3.select('#'+NewIDHighlight).select('circle');
                                             if (colorVar.style('opacity') == 0.99)
