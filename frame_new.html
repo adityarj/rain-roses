@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@0.7.7/dist/leaflet.js"></script>
     <script src="http://d3js.org/d3.v3.js"></script>
     <script src="https://cdn.rawgit.com/fryn/html5slider/gh-pages/html5slider.js"></script>
     <script src="csv_files/CoordinateMapData.js"></script>
@@ -22,10 +22,13 @@
     <script src="node_modules/datatables.net/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="aux_files/excellentexport-master/excellentexport.min.js"></script>
     <script type="text/javascript" src="csv_files/ProcessElevationData.js"></script>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script type="text/javascript" src="RainfallMap.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="aux_files/awesome-bootstrap-checkbox-master/awesome-bootstrap-checkbox.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 </head>
 <body>
     <style>
@@ -120,7 +123,7 @@
             background-color: #b5bbbf;
         }
         #SecoMap {
-            height: 250px;
+            height: 180px;
             text-align: center;
             z-index: 2;
             background-color: #d8e0fa;
@@ -293,6 +296,14 @@
             fill:none;
             stroke: #2f2f2f;
         }
+        .unselectableText {
+            -webkit-user-select: none; /* Chrome/Safari */        
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+ */
+            -o-user-select: none;
+            user-select: none;
+            cursor: default;
+        }
         .xaxisPH path, .yaxisPH path, .xaxisSol path, .yaxisSol path,
         .xaxisAmm path, .yaxisAmm path,
         .xaxisPerm path, .yaxisPerm path,
@@ -313,8 +324,8 @@
     <script type="text/javascript" id="Jquery stuff">
 
         var GlobalInterval = '';
-        var NewIDHighlight = '';
-        var OldStyleColor = '';
+        var NewIDHighlight = 'a72';
+        var OldStyleColor = 'black';
 
         $(document).ready(function () {
 
@@ -387,11 +398,10 @@
                 });
 
 
-                var MyMap = L.map('MapMain').setView([30.25, 120.166667], 9);
+                var MyMap = L.map('MapMain',{minZoom: 4}).setView([30.25, 120.166667], 9);
 
                 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                    maxZoom: 18,
+                    attribution: 'Lines represent basins',
                     id: 'adityarj.0mbl5ab1',
                     accessToken: 'pk.eyJ1IjoiYWRpdHlhcmoiLCJhIjoiY2lwczQ0dzFmMDJqcWZsbTI3bDJld2JoNSJ9.mpkJWXaUYoE1jtAn6a9Mvw'
                 }).addTo(MyMap);
@@ -407,6 +417,11 @@
                 var PolyLines = [];
                 var PolyLineCountList = [];
                 var CountList = {};
+
+                StartGraphInit();
+                StartScatterInit();
+                //StartHeatmapInit();
+                
 
                 //Generate Polylines for the map according to the basin names
                 BasinMarkup.forEach(function (d) {
@@ -436,7 +451,13 @@
 
                 function LabelHeader(id) {
                     $('#IDRealTime').text(DataListFin[id][0]);
-                    $('#pHLevel').text(DataListFin[id][2]);
+
+                    if (DataListFin[id][2] == '9999') {
+                        $('#pHLevel').text('-');
+                    } else {
+                        $('#pHLevel').text(DataListFin[id][2]);
+                    }
+
                     $('#pHIndex').text(DataListFin[id][3]);
 
                     if (DataListFin[id][3]=='Ⅴ' || DataListFin[id][3]=='劣Ⅴ') {
@@ -449,7 +470,11 @@
                         $('#pHRow').attr('class','');
                     }
 
-                    $('#SolLevel').text(DataListFin[id][4]);
+                   if (DataListFin[id][4] == '9999') {
+                        $('#SolLevel').text('-');
+                    } else {
+                        $('#SolLevel').text(DataListFin[id][4]);
+                    }
                     $('#SolIndex').text(DataListFin[id][5]);
 
                     if (DataListFin[id][5]=='Ⅴ'|| DataListFin[id][5]=='劣Ⅴ') {
@@ -462,7 +487,11 @@
                         $('#SolRow').attr('class','');
                     }
 
-                    $('#AmmLevel').text(DataListFin[id][6]);
+                    if (DataListFin[id][6] == '9999') {
+                        $('#AmmLevel').text('-');
+                    } else {
+                        $('#AmmLevel').text(DataListFin[id][6]);
+                    }
                     $('#AmmIndex').text(DataListFin[id][7]);
 
                     if (DataListFin[id][7]=='Ⅴ'|| DataListFin[id][7]=='劣Ⅴ') {
@@ -475,7 +504,11 @@
                         $('#AmmRow').attr('class','');
                     }
 
-                    $('#PermLevel').text(DataListFin[id][8]);
+                    if (DataListFin[id][8] == '9999') {
+                        $('#PermLevel').text('-');
+                    } else {
+                        $('#PermLevel').text(DataListFin[id][8]);
+                    }
                     $('#PermIndex').text(DataListFin[id][9]);
 
                     if (DataListFin[id][9]=='Ⅴ'|| DataListFin[id][9]=='劣Ⅴ') {
@@ -488,7 +521,11 @@
                         $('#PermRow').attr('class','');
                     }
 
-                    $('#TOCLevel').text(DataListFin[id][10]);
+                    if (DataListFin[id][10] == '9999') {
+                        $('#TOCLevel').text('-');
+                    } else {
+                        $('#TOCLevel').text(DataListFin[id][10]);
+                    }
                     $('#TOCIndex').text(DataListFin[id][11]);
                     if (DataListFin[id][11]=='Ⅴ' || DataListFin[11]=='劣Ⅴ') {
                         $('#TOCRow').attr('class','table-danger');
@@ -738,6 +775,7 @@
                     id: 'All',
                     text: 'All'
                 }).css('height','auto')
+                        .css('cursor','pointer')
                         .css('color','white')
                         .css('background-color','#5a6b72')
                         .appendTo(AllElement);
@@ -804,9 +842,14 @@
                     $('<div />', {
                         text: function () {
                             var Text = d.basin.split('-').join('');
-                            return Text.charAt(0).toUpperCase() + Text.substr(1);
+                            Text = Text.charAt(0).toUpperCase() + Text.substr(1);
+                            if (d.info.length > 6) {
+                                return Text+='*';
+                            } else {
+                                return Text;
+                            }
                         }
-                    }).css('display','inline-block').css('color','white').css('margin-left','20px').appendTo(ParentEl);
+                    }).css('cursor','pointer').css('display','inline-block').css('color','white').css('margin-left','20px').appendTo(ParentEl);
                     Incre++;
                 });
 
@@ -1075,6 +1118,7 @@
                             .style('font-size','12px')
                             .style('user-select','none')
                             .attr('text-anchor','middle')
+                            .attr('class','unselectableText')
                             .attr('id',function (d,i) {
                                 return 'bas'+i;
                             })
@@ -1117,7 +1161,9 @@
 
                                 var ID = Basin.info[i][0];
 
-                                d3.select('#'+NewIDHighlight).select('circle').style('fill',OldStyleColor);
+                                if (NewIDHighlight != '') {
+                                    d3.select('#'+NewIDHighlight).select('circle').style('fill',OldStyleColor);
+                                }
 
                                 info.forEach(function (data) {
                                     if (data[0] == ID) {
@@ -1155,7 +1201,7 @@
                             });
 
                     dust.append('text')
-                            .attr('class','id-labels')
+                            .attr('class','id-labels unselectableText')
                             .attr('id',function(d,i) {
                                 return 'BT'+i;
                             })
@@ -1467,6 +1513,7 @@
                             .property('checked',true)
                             .attr('id','BasinRealTimeCheckpH')
                             .on('click',function () {
+
                                 CircleLayer.style('background-color',function (d) {
                                     var Classify = ClassifyColor(d[3]);
 
@@ -1562,6 +1609,7 @@
                                         return color(Classify[4]);
                                     } else return '#5f6f7';
                                 })
+                        
                             });
 
                     TOCbox.append('label')
@@ -1569,25 +1617,21 @@
                             .text('TOC');
                 }
 
+
                 function GenerateMapPointsSVG(TypePol) {
 
                     //GENERATE CODE ONLY
                     //####################################################
                     d3.select('#d3overlay').remove();
 
+                    
+
                     var svg = d3.select(MyMap.getPanes().overlayPane).append('svg')
                             .attr('id','d3overlay');
+
                     var g = d3.select('#d3overlay').append('g').attr('class','leaflet-zoom-hide');
 
-                    var div = svg.append('rect')
-                            .attr('width','70px')
-                            .attr('height','20px')
-                            .attr('fill','orange')
-                            .attr('class','tooltip')
-                            .style('opacity',0);
-
-                    div.append('text')
-                            .text('');
+                    
 
                     d3.json('MapDataRT.geo.json',function (collection) {
 
@@ -1727,8 +1771,7 @@
                                     })
                                     .on('click', function () {
                                         clearInterval(GlobalInterval);
-                                        if(NewIDHighlight != '')
-                                            d3.select('#'+NewIDHighlight).select('circle').style('fill',OldStyleColor).style('opacity',1);
+                                        d3.select('#'+NewIDHighlight).select('circle').style('fill',OldStyleColor).style('opacity',1);
                                         OldStyleColor = d3.select(this).select('circle').style('fill');
                                         GlobalInterval = setInterval(changeColor,500);
                                         NewIDHighlight = d3.select(this).attr('id');
@@ -1803,6 +1846,7 @@
                         reset();
 
                         function reset() {
+
                             var bounds = d3path.bounds(collection),
                                     topLeft = bounds[0],
                                     bottomRight = bounds[1];
@@ -1861,6 +1905,10 @@
                         text: 'Download as CSV'
                     }).css('font-size','17px').appendTo('#ButtonContainerCSV');
                 });
+
+                console.log('wut');
+
+                InitRainChart();
 
 
 

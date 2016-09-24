@@ -108,14 +108,182 @@ var RainfallData = React.createClass({
         return (
             <div className="container" id="RainfallDataContainer">
                 <div className="row">
-                    <LeftTab />
-                    <RightTab />
-                    <AuxHeader />
+                    <CentralTabRain />
                 </div>
             </div>
         );
     }
 });
+
+var CentralTabRain = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <div id="MainHeatMap" style={{
+                    width: '1100px',
+                    height: '600px'
+                }}></div>
+                <ButtonConfig/>
+            </div>
+        )
+    }
+});
+
+var ButtonConfig = React.createClass({
+    render: function() {
+        return (
+            <div className="container" style={{marginTop: '20px'}}>
+                <div className="col-sm-4" id="LegendRainfalls">
+                    <div className="SecoMap" id="SecoMap">
+                <div id="TextHeatmap"></div>
+                <div id="HeatMapColorRange" style={{
+                    display: 'inline-block',
+                    height: '30px',
+                    marginTop: '30px'
+                }}>
+                    <div style={{
+                        backgroundColor: '#ffffd9',
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block'
+
+                    }}></div>
+                    <div style={{
+                        backgroundColor: '#edf8b1',
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block'
+                    }}></div>
+                    <div style={{
+                        backgroundColor: '#c7e9b4',
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block'
+                    }}></div>
+                    <div style={{
+                        backgroundColor: '#7fcdbb',
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block'
+                    }}></div>
+                    <div style={{
+                        backgroundColor: '#41b6c4',
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block'
+                    }}></div>
+                    <div style={{
+                        backgroundColor: '#1d91c0',
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block'
+                    }}></div>
+                    <div style={{
+                        backgroundColor: '#225ea8',
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block'
+                    }}></div>
+                    <div style={{
+                        backgroundColor: '#253494',
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block'
+                    }}></div>
+                    <div style={{
+                        backgroundColor: '#081d58',
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block'
+                    }}></div>
+                </div>
+                <div id="RangeLabels" style={{
+                    fontSize: '10px',
+                    fontFamily: 'Typo Grotesk Black'
+                }}>
+                    <div style={{
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block',
+                        textAlign: 'left'
+                    }}>0</div>
+                    <div style={{
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block',
+                        textAlign: 'left'
+                    }}>50</div>
+                    <div style={{
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block',
+                        textAlign: 'left'
+                    }}>100</div>
+                    <div style={{
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block',
+                        textAlign: 'left'
+                    }}>150</div>
+                    <div style={{
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block',
+                        textAlign: 'left'
+                    }}>200</div>
+                    <div style={{
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block',
+                        textAlign: 'left'
+                    }}>250</div>
+                    <div style={{
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block',
+                        textAlign: 'left'
+                    }}>300</div>
+                    <div style={{
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block',
+                        textAlign: 'left'
+                    }}>350</div>
+                    <div style={{
+                        height: '30px',
+                        width: '30px',
+                        display: 'inline-block',
+                        textAlign: 'left'
+                    }}>400+</div>
+                </div>
+            </div>
+                </div>
+                <div className="col-sm-4" id="ButtonsRainfall">
+                </div>
+                <div className="col-sm-4" id="LabelsRainfall">
+                    <table className="table table-inverse">
+                        <thead>
+                            <tr>
+                                <th>Province</th>
+                                <th>Prefecture</th>
+                                <th>County</th>
+                                <th>Rainfall</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" id="ProvinceLabelRain">-</th>
+                                <th id="DistrictLabelRain">-</th>
+                                <th id="CityLabelRain">-</th>
+                                <th id="RainLabelValue">-</th>
+                            </tr>                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        )
+    }
+})
 
 var Data2015Switch = React.createClass({
     render: function () {
@@ -236,6 +404,21 @@ var PolMapDetails = React.createClass({
                         }} onClick = {this.HandleClick}>
                             {this.state.name}
                         </button>
+                    </div>
+                    <div className="col-sm-2">
+                        <label className="label label-success" style = {{
+                            fontSize: '12px',
+                            padding: '12px',
+                            marginBottom: '15px'
+                        }}>Data: December 2015</label>
+                    </div>
+                    <div className="col-sm-2">
+                        <label className="label label-secondary" id='BasinIdentityLabel' style={{
+                            fontSize: '12px',
+                            padding: '12px',
+                            marginBottom: '15px',
+                            backgroundColor: '#0E1A24'
+                        }}>-</label>
                     </div>
                 </div>
                 <div className="row" id="PolMapDetails">
@@ -751,6 +934,9 @@ var SwitchScreenLeft = React.createClass({
                         </div>
                     </div>
                 </div>
+                <div style={{fontFamily: 'Helvetica',fontSize: '30px',fontWeight: '500'}}>
+                    Rain 'N' Roses
+                </div>
             </div>
         )
     }
@@ -887,13 +1073,19 @@ var SecoMap = React.createClass({
 });
 
 var GraphSettings = React.createClass({
+    handleScroll: function() {
+        $('body, html').animate({ scrollTop: 0 }, 800);
+    },
     render: function () {
         return (
             <div className="GraphSettings" id="GraphSettings">
                 <div id="Droppable">
                     <div id="DropText" style={{
                         margin: '10px'
-                    }}>Drop Squares to compare</div>
+                    }}>Drag & drop Squares to compare</div>
+                </div>
+                <div id="ScrollUpButton">
+                    <button className="btn btn-secondary" onClick={this.handleScroll}>Top</button>
                 </div>
             </div>
         )
@@ -907,7 +1099,7 @@ var SecoSettings = React.createClass({
             $(changeScope[0]).slideDown(400);
     },
     componentDidMount:function () {
-        $('#RainfallDataContainer').hide();
+        $('#PollutionDataContainer').hide();
         $('#AnalysisDataContainer').hide();
     },
     render: function () {

@@ -7,7 +7,7 @@ var ramp = d3.scale.quantize()
     .range(["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]);
 var Months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-$(function () {
+function StartHeatmapInit() {
 var data = d3.csv('csv_files/rainfall_data_2015_monthly.csv', function (data) {
 
         var main = d3.select('#Heatmap').append('div');
@@ -102,15 +102,15 @@ var data = d3.csv('csv_files/rainfall_data_2015_monthly.csv', function (data) {
                  ObservationDiv = OuterLayer.append('div')
                     .attr('id','s'+String(i))
                     .attr('class','drag')
-                    .style('width', 20 + 'px')
+                    .style('width', 5 + 'px')
                     .style('position','relative')
-                    .style('height', 20 + 'px')
+                    .style('height', 5 + 'px')
                     .style('background-color', function () {
                         return ramp(d.Amt);
                     })
                     .style('border-radius', 5 + 'px')
                     .style('margin', 2 + 'px')
-                    .on('click',function () {
+                    .on('mouseover',function () {
 
                         var Info = d3.select(this).select('div').text().split('/');
 
@@ -128,7 +128,7 @@ var data = d3.csv('csv_files/rainfall_data_2015_monthly.csv', function (data) {
                         }
                     })
                     .on('mousemove',function () {
-                        return tooltip.style('top',(event.pageY)+'px')
+                        return tooltip.style('top',(event.pageY - 100)+'px')
                             .style('left',(event.pageX-700)+'px');
                     })
                     .on('mouseout',function () {
@@ -152,6 +152,18 @@ var data = d3.csv('csv_files/rainfall_data_2015_monthly.csv', function (data) {
     var sel = d3.select('#Heatmap');
 
     var timer = '';
+
+    d3.select('#SecoMap').append('button')
+        .attr('type','button')
+        .attr('class','btn btn-secondary')
+        .style('margin-top','10px')
+        .style('font-family','FontAwesome')
+        .style('font-size','18px')
+        .style('margin-right','5px')
+        .text('\uf060')
+        .on('click',function() {
+            changeVar(true);
+        })
 
     d3.select('#SecoMap').append('button')
         .attr('type','button')
@@ -185,8 +197,30 @@ var data = d3.csv('csv_files/rainfall_data_2015_monthly.csv', function (data) {
 
 
 
-    function changeVar() {
-        if (counter<12) {
+    function changeVar(val = false) {
+        if (val) {
+            counter-=1;
+            if (counter == 0) {
+                counter = 12;
+            }
+                var NewData = d3.csv('csv_files/rainfall_data_2015_monthly.csv',function (data) {
+                data.forEach(function (d,i) {
+                    if(d.Month == counter) {
+                        d3.select('#s'+String(i - (counter - 1)))
+                            .transition()
+                            .duration(500)
+                            .style('background-color',function () {
+                                return ramp(d.Amt);
+                            })
+                            .select('div')
+                            .text(d.Province+'/'+d.Prefecture+'/'+d.County+'/'+d.Amt);
+                    }
+                });
+                $('#TextHeatmap').text(Months[counter-1]);
+                });
+                //counter++;
+        } else {
+            if (counter<12) {
             var NewData = d3.csv('csv_files/rainfall_data_2015_monthly.csv',function (data) {
                 data.forEach(function (d,i) {
                     if(d.Month == counter) {
@@ -222,6 +256,8 @@ var data = d3.csv('csv_files/rainfall_data_2015_monthly.csv', function (data) {
             });
             counter++;
         }
+        }
+        
         
     }
-});
+}

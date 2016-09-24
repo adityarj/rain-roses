@@ -4,13 +4,13 @@
 
 //Creating check boxes that provide interactivity for the scatter plot
 
-$(function () {
+function StartScatterInit() {
     var timer = '';
     var SpecTime = '';
 
     var PlayAction = true;
     var controller = 0;
-    var speed = 800;
+    var speed = 100;
     var ClickBait = false;
     var GlobalID = '';
     var colorBasin = ['#bbd8fa','#e1c3ff','#fad6fa','#ffead7','#ffeacb','#fce0c8','#a7e4ff','#ffbfda',
@@ -69,8 +69,8 @@ $(function () {
 
                 if (d3.select('#PlayButton').text()=='Pause') {
                     clearInterval(timer);
-                    timer = setInterval(AnalysisThing,800);
-                    speed = 800;
+                    timer = setInterval(AnalysisThing,400);
+                    speed = 400
                 }
             });
 
@@ -95,8 +95,8 @@ $(function () {
 
                 if (d3.select('#PlayButton').text()=='Pause') {
                     clearInterval(timer);
-                    timer = setInterval(AnalysisThing, 400);
-                    speed = 400;
+                    timer = setInterval(AnalysisThing, 200);
+                    speed = 200;
                 }
             });
 
@@ -117,8 +117,8 @@ $(function () {
 
                 if (d3.select('#PlayButton').text()=='Pause') {
                     clearInterval(timer);
-                    timer = setInterval(AnalysisThing, 200);
-                    speed = 200;
+                    timer = setInterval(AnalysisThing,100);
+                    speed = 100;
                 }
             });
 
@@ -1050,15 +1050,21 @@ $(function () {
                 $('#AnalysisDataContainer').fadeOut(200).delay(100);
                 $('#RainfallDataContainer').slideDown(400);
 
-                $('html,body').animate({
-                        scrollTop: $("#"+Province).offset().top},
-                    'slow');
+
+                $('.selectpicker').selectpicker('val',Province);
+                d3.selectAll('.All').style('opacity',0.3);
+                d3.selectAll('.'+Province).style('opacity',1);
 
                 //Scroll to the particular province that contains this line and highlight it
 
 
             })
             .text('View Rainfall Data');
+
+        InteractiveButtons.append('div')
+            .style('margin-left','25px')
+            .text('Pause and select a point to enable')
+            .style('display','inline-block');
 
         var ToolTips = d3.select('#MainScatter')
             .append('div')
@@ -1182,6 +1188,6 @@ $(function () {
 
 
 
-});
+}
 
 
